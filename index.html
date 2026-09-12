@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html class="h-full scroll-smooth" lang="pl">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Om Shala Joga Jawor — Przestrzeń Wyciszenia i Oddechu</title>
+  
+  <meta name="description" content="Kameralne studio jogi w Jaworze przy ul. Chopina 13/11. Małe grupy do 6 osób. Hatha Joga, Joga Nidra, Misy Kryształowe i medytacja. Zapisz się na zajęcia online!">
+  <meta name="keywords" content="joga Jawor, Om Shala Joga, studio jogi Jawor, hatha joga, joga nidra, misy kryształowe Jawor, Kaja Wiśniewska, relaksacja, zdrowy kręgosłup, mobility">
+  <meta name="author" content="Om Shala Joga Jawor">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Om Shala Joga Jawor — Przestrzeń Wyciszenia i Oddechu">
+  <meta property="og:description" content="Kameralne studio jogi w Jaworze przy ul. Chopina 13/11. Sprawdź harmonogram i zarezerwuj miejsce na macie.">
+  <meta property="og:image" content="assets/images/banner.jpg">
+  <meta property="og:locale" content="pl_PL">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/mandala-clean.png">
+
+  <!-- Google Fonts & Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#e3f1ed",
+            "tertiary-fixed": "#f6d9ff",
+            "surface": "#effcf9",
+            "error": "#ba1a1a",
+            "on-primary-fixed-variant": "#00504b",
+            "inverse-primary": "#8fd3cc",
+            "surface-container-low": "#e9f7f3",
+            "on-primary-container": "#91d5ce",
+            "primary": "#004541",
+            "background": "#effcf9",
+            "secondary-container": "#fec97b",
+            "on-error-container": "#93000a",
+            "surface-variant": "#d8e5e2",
+            "secondary-fixed": "#ffddb1",
+            "surface-bright": "#effcf9",
+            "on-secondary-fixed-variant": "#614000",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#abefe8",
+            "on-tertiary-fixed": "#281233",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#644b6f",
+            "primary-fixed-dim": "#8fd3cc",
+            "outline-variant": "#bec9c7",
+            "inverse-surface": "#273331",
+            "on-background": "#121e1c",
+            "on-surface-variant": "#3f4947",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#debee9",
+            "surface-tint": "#216963",
+            "on-surface": "#121e1c",
+            "on-secondary-container": "#78520e",
+            "outline": "#6f7977",
+            "tertiary-fixed-dim": "#dcbbe7",
+            "surface-dim": "#cfddd9",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ddebe8",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#d8e5e2",
+            "tertiary": "#4c3457",
+            "secondary-fixed-dim": "#f2be71",
+            "inverse-on-surface": "#e6f4f0",
+            "on-primary-fixed": "#00201e",
+            "primary-container": "#115e59",
+            "on-tertiary-fixed-variant": "#563d61",
+            "secondary": "#7e5713",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#291800"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "display-lg": ["Playfair Display", "serif"],
+            "headline-md": ["Playfair Display", "serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Playfair Display", "serif"],
+            "headline-lg": ["Playfair Display", "serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.1em", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.08em", fontWeight: "500" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.06em", fontWeight: "600" }],
+            "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0.02em", fontWeight: "400" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0.03em", fontWeight: "500" }],
+            "headline-lg": ["36px", { lineHeight: "44px", letterSpacing: "0.04em", fontWeight: "500" }],
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "0.02em", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+  <!-- =======================================================================
+       GŁÓWNY MINIMALISTYCZNY HEADER (Dokładnie jak na przesłanej grafice)
+       ======================================================================= -->
+  <header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md border-b border-outline-variant/10 transition-all duration-300" id="main-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Lewa strona: Logo Om Shala Studio Jogi -->
+      <a href="#" class="flex items-center gap-3 group shrink-0">
+        <img src="assets/images/om-shala-mandala-perfect.png" alt="Om Shala Joga Logo" class="h-9 w-9 object-contain group-hover:rotate-45 transition-transform duration-500"/>
+        <div class="flex flex-col">
+          <span class="font-serif text-lg tracking-[0.15em] text-[#004541] font-normal uppercase leading-tight">Om Shala</span>
+          <span class="text-[9px] tracking-[0.25em] text-[#7e5713] uppercase font-sans">Studio Jogi • Jawor</span>
+        </div>
+      </a>
+
+      <!-- Środek: Czyste menu tekstowe (widoczne na lg+) -->
+      <nav class="hidden lg:flex items-center gap-8 text-[12px] tracking-[0.18em] uppercase font-sans font-medium text-[#273331]/80">
+        <a href="#o-studiu" class="hover:text-[#004541] transition-colors">O nas</a>
+        <a href="#dlaczego-joga" class="hover:text-[#004541] transition-colors">Zajęcia</a>
+        <a href="#harmonogram" class="hover:text-[#004541] transition-colors">Harmonogram</a>
+        <a href="#nauczyciele" class="hover:text-[#004541] transition-colors">Prowadzący</a>
+        <a href="#cennik" class="hover:text-[#004541] transition-colors">Cennik</a>
+        <a href="#kontakt" class="hover:text-[#004541] transition-colors">Kontakt</a>
+      </nav>
+
+      <!-- Prawa strona: Przycisk "ZAPISZ SIĘ ->" oraz ikona Instagrama -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="https://zarezerwuj.pl/om-shala-joga" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#004541]/40 text-[#004541] hover:bg-[#004541] hover:text-white transition-all text-[11px] tracking-[0.18em] uppercase font-sans font-medium">
+          <span>Zapisz się</span>
+          <span class="text-[13px]">&rarr;</span>
+        </a>
+
+        <a href="https://www.instagram.com/omshalajoga/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @omshalajoga"
+           class="w-9 h-9 rounded-full border border-[#004541]/30 flex items-center justify-center text-[#004541] hover:bg-[#004541] hover:text-white transition-all">
+          <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+
+        <!-- Hamburger button (Mobile & Tablet) -->
+        <button id="mobile-menu-btn" type="button" aria-label="Otwórz menu" class="lg:hidden p-1.5 rounded-xl text-[#004541] hover:bg-surface-container transition-colors focus:outline-none">
+          <span class="material-symbols-outlined text-[26px]" id="hamburger-icon">menu</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden px-6 pt-3 pb-6 bg-[#effcf9]/95 backdrop-blur-md border-b border-outline-variant/30 space-y-3 shadow-lg transition-all duration-300">
+      <div class="flex flex-col space-y-2 pt-1 text-sm tracking-wider uppercase font-medium">
+        <a href="#o-studiu" class="mobile-nav-link text-on-surface py-2 border-b border-outline-variant/10">O nas</a>
+        <a href="#dlaczego-joga" class="mobile-nav-link text-on-surface py-2 border-b border-outline-variant/10">Zajęcia</a>
+        <a href="#harmonogram" class="mobile-nav-link text-on-surface py-2 border-b border-outline-variant/10">Harmonogram</a>
+        <a href="#nauczyciele" class="mobile-nav-link text-on-surface py-2 border-b border-outline-variant/10">Prowadzący</a>
+        <a href="#cennik" class="mobile-nav-link text-on-surface py-2 border-b border-outline-variant/10">Cennik</a>
+        <a href="#kontakt" class="mobile-nav-link text-on-surface py-2 border-b border-outline-variant/10">Kontakt</a>
+      </div>
+      <div class="pt-3 flex flex-col gap-2.5">
+        <a href="tel:+48512748316" class="flex items-center justify-center gap-2 py-2.5 rounded-full bg-surface-container text-[#004541] font-medium text-xs tracking-wider uppercase">
+          <span class="material-symbols-outlined text-[16px]">call</span> Zadzwoń: 512 748 316
+        </a>
+        <a href="https://zarezerwuj.pl/om-shala-joga" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 rounded-full bg-[#004541] text-white font-medium text-xs tracking-wider uppercase shadow-md">
+          Zarezerwuj miejsce online &rarr;
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full bg-background flex-1">
+
+    <!-- =======================================================================
+         HERO SECTION: REDAKCYJNY EDITORIAL LUXURY (DOKŁADNIE JAK NA GRAFICE)
+         ======================================================================= -->
+    <section class="relative w-full min-h-screen flex flex-col justify-center items-center text-center overflow-hidden pt-24 pb-16 px-4 sm:px-6 bg-[#e9eee7]" id="o-studiu">
+      
+      <!-- Zdjęcie tła z naturalnym światłocieniem i liśćmi -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/hero-zen-bg.jpg" alt="Organiczne tło studia jogi" class="w-full h-full object-cover object-center"/>
+        <!-- Bardzo delikatny filtr dla zachowania idealnego kontrastu typografii -->
+        <div class="absolute inset-0 bg-[#f4f3ee]/50 backdrop-blur-[1px]"></div>
+      </div>
+
+      <!-- Główna zawartość Hero (Idealnie wycentrowana w pionie i poziomie) -->
+      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center px-4">
+        
+        <!-- Centralna, wyrazista mandala z Twojego pliku bez tła -->
+        <div class="w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 mb-6 sm:mb-8 transition-transform duration-700 hover:rotate-45">
+          <img src="assets/images/om-shala-mandala-perfect.png" alt="Om Shala Mandala" class="w-full h-full object-contain drop-shadow-sm"/>
+        </div>
+
+        <!-- Wielki, elegancki tytuł szeryfowy OM SHALA -->
+        <h1 class="font-serif text-[42px] sm:text-[64px] md:text-[80px] lg:text-[96px] leading-none tracking-[0.14em] text-[#004541] font-normal uppercase mb-2 sm:mb-3">
+          Om Shala
+        </h1>
+
+        <!-- Podtytuł STUDIO JOGI -->
+        <p class="text-[13px] sm:text-[16px] md:text-[19px] tracking-[0.45em] text-[#004541]/85 uppercase font-serif font-light mb-6 sm:mb-8">
+          Studio Jogi
+        </p>
+
+        <!-- Elegancka linia ozdobna z rombem w środku -->
+        <div class="flex items-center justify-center gap-3 sm:gap-4 w-48 sm:w-64 mb-6 sm:mb-8">
+          <div class="h-px bg-[#004541]/40 flex-1"></div>
+          <div class="w-1.5 h-1.5 rotate-45 bg-[#004541]/60"></div>
+          <div class="h-px bg-[#004541]/40 flex-1"></div>
+        </div>
+
+        <!-- Trzy filary: ODDECH • RUCH • RÓWNOWAGA -->
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[11px] sm:text-[13px] md:text-[14px] tracking-[0.35em] text-[#273331]/80 uppercase font-sans font-medium mb-10">
+          <span>Oddech</span>
+          <span class="text-[#7e5713] text-xs">•</span>
+          <span>Ruch</span>
+          <span class="text-[#7e5713] text-xs">•</span>
+          <span>Równowaga</span>
+        </div>
+
+        <!-- Kapsułka z adresem i grupami (Dyskretna, dodająca autentyczności) -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[12px] text-[#273331]/75 mb-10">
+          <span class="bg-surface/80 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-outline-variant/30 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[14px] text-[#004541]">location_on</span>
+            ul. Chopina 13/11, Jawor
+          </span>
+          <span class="bg-surface/80 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-outline-variant/30 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[14px] text-[#7e5713]">groups</span>
+            Kameralne grupy (max 6 osób)
+          </span>
+        </div>
+
+        <!-- Okrągły przycisk ze strzałką w dół (Scroll indicator jak na grafice) -->
+        <a href="#dlaczego-joga" aria-label="Przewiń do treści" 
+           class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[#004541]/40 flex items-center justify-center text-[#004541] hover:bg-[#004541] hover:text-white transition-all hover:scale-105 duration-300 shadow-xs">
+          <span class="material-symbols-outlined text-[22px]">keyboard_arrow_down</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         DLACZEGO JOGA? (5 Prawdziwych Punktów ze Studia)
+         ======================================================================= -->
+    <section class="relative w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface" id="dlaczego-joga">
+      <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+        
+        <div class="w-16 h-16 mb-3 transition-transform duration-500 hover:rotate-45">
+          <img alt="Mandala Om Shala" class="w-full h-full object-contain" src="assets/images/mandala-clean.png"/>
+        </div>
+        
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-2">Filozofia Studia</span>
+        <h2 class="font-headline-lg text-[28px] sm:text-[36px] lg:text-[40px] text-primary tracking-wide uppercase font-serif mb-3">
+          Dlaczego Joga?
+        </h2>
+        <div class="w-16 h-0.5 bg-secondary-container rounded-full mb-10"></div>
+
+        <!-- 5 Prawdziwych Punktów Studia OM SHALA -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full text-left">
+          
+          <!-- Punkt 1 -->
+          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
+                <span class="material-symbols-outlined text-[22px]">explore</span>
+              </div>
+              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... pozwala Ci wejść w głąb siebie</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Zatrzymaj codzienny pęd. Daj sobie bezpieczną przestrzeń na wsłuchanie się we własne potrzeby i emocje.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
+              <span>Wewnętrzny spokój</span>
+            </div>
+          </div>
+
+          <!-- Punkt 2 -->
+          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
+                <span class="material-symbols-outlined text-[22px]">balance</span>
+              </div>
+              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... harmonizuje ciało i umysł</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Ruch zsynchronizowany z oddechem przywraca naturalną równowagę psychofizyczną i usuwa napięcia.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
+              <span>Harmonia</span>
+            </div>
+          </div>
+
+          <!-- Punkt 3 -->
+          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
+                <span class="material-symbols-outlined text-[22px]">spa</span>
+              </div>
+              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... wycisza i relaksuje</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Pranajama i techniki relaksacyjne obniżają poziom kortyzolu, kojąc układ nerwowy po całym dniu.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
+              <span>Wyciszenie</span>
+            </div>
+          </div>
+
+          <!-- Punkt 4 -->
+          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
+                <span class="material-symbols-outlined text-[22px]">psychology</span>
+              </div>
+              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... uczy Cię poznawać siebie</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Uważna obserwacja ciała na macie pozwala z empatią odkryć swoje granice i krok po kroku je rozszerzać.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
+              <span>Samoświadomość</span>
+            </div>
+          </div>
+
+          <!-- Punkt 5 (Span na 2 kolumny na desktopie) -->
+          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between md:col-span-2 lg:col-span-2">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
+                <span class="material-symbols-outlined text-[22px]">fitness_center</span>
+              </div>
+              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... z wyczuciem uelastycznia i mobilizuje ciało</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Bezpieczna, anatomiczna praca z asanami przywraca ruchomość stawom, wzmacnia mięśnie głębokie kręgosłupa i poprawia ogólną sprawność bez przeciążania organizmu.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
+              <span>Witalność & Mobilność</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Subtelny link Zapisz się -->
+        <div class="mt-12 flex flex-col items-center">
+          <a class="group flex flex-col items-center gap-1 text-primary hover:text-primary-container transition-colors" href="https://zarezerwuj.pl/om-shala-joga" rel="noopener noreferrer" target="_blank">
+            <span class="font-headline-sm text-headline-sm uppercase tracking-[0.35em] font-serif text-primary border-b-2 border-secondary/40 pb-1 group-hover:border-primary transition-all">
+              z a p i s z &nbsp; s i ę
+            </span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Bezpośrednia rezerwacja miejsc w systemie zarezerwuj.pl</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         HARMONOGRAM ZAJĘĆ (Pon - Pt bez zbędnych przycisków wewnątrz kafelków)
+         ======================================================================= -->
+    <section class="w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface-container-low" id="harmonogram">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Nagłówek sekcji -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 pb-4 border-b border-outline-variant/30">
+          <div>
+            <div class="inline-flex items-center gap-2 text-secondary font-label-sm text-label-sm tracking-widest uppercase mb-1">
+              <span class="material-symbols-outlined text-[14px]">event_repeat</span> Grafik tygodniowy sesji
+            </div>
+            <h2 class="font-headline-lg text-[28px] sm:text-[36px] lg:text-[40px] font-serif tracking-tight text-primary uppercase">
+              Harmonogram Zajęć
+            </h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Studio Om Shala Joga • ul. Chopina 13/11, Jawor
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <span class="px-3 py-1 rounded-full bg-surface text-primary font-medium shadow-xs flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-primary"></span> Hatha Joga
+            </span>
+            <span class="px-3 py-1 rounded-full bg-surface text-purple-800 font-medium shadow-xs flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-purple-700"></span> Joga Nidra
+            </span>
+            <span class="px-3 py-1 rounded-full bg-surface text-amber-800 font-medium shadow-xs flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-600"></span> Misy Kryształowe
+            </span>
+          </div>
+        </div>
+
+        <!-- Siatka dni roboczych (Poniedziałek - Piątek, czysta bez zaśmiecających przycisków) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          
+          <!-- Poniedziałek -->
+          <div class="flex flex-col rounded-2xl overflow-hidden bg-surface shadow-xs border border-outline-variant/30">
+            <div class="bg-primary text-on-primary py-3 px-4 text-center font-label-lg text-sm tracking-wide uppercase font-semibold">
+              Poniedziałek
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-end min-h-[260px] gap-3 bg-surface">
+              <div class="p-4 rounded-xl bg-surface-container-low shadow-xs border border-outline-variant/20 hover:bg-surface-container transition-colors">
+                <span class="font-label-sm text-xs text-primary font-bold block mb-1">19:00 – 20:30</span>
+                <h4 class="font-headline-sm text-base font-serif text-primary font-semibold">HATHA JOGA</h4>
+                <p class="text-xs text-on-surface-variant mt-1">Kaja Wiśniewska</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wtorek -->
+          <div class="flex flex-col rounded-2xl overflow-hidden bg-surface shadow-xs border border-outline-variant/30">
+            <div class="bg-primary text-on-primary py-3 px-4 text-center font-label-lg text-sm tracking-wide uppercase font-semibold">
+              Wtorek
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-end min-h-[260px] gap-2.5 bg-surface">
+              <!-- 17:00 -->
+              <div class="p-3.5 rounded-xl bg-surface-container-low shadow-xs border border-outline-variant/20 hover:bg-surface-container transition-colors">
+                <span class="font-label-sm text-xs text-primary font-bold block mb-1">17:00 – 18:30</span>
+                <h4 class="font-headline-sm text-base font-serif text-primary font-semibold">HATHA JOGA</h4>
+                <p class="text-xs text-on-surface-variant mt-1">Kaja Wiśniewska</p>
+              </div>
+              <!-- 19:00 -->
+              <div class="p-3.5 rounded-xl bg-surface-container-low shadow-xs border border-outline-variant/20 hover:bg-surface-container transition-colors">
+                <span class="font-label-sm text-xs text-primary font-bold block mb-1">19:00 – 20:30</span>
+                <h4 class="font-headline-sm text-base font-serif text-primary font-semibold">HATHA JOGA</h4>
+                <p class="text-xs text-on-surface-variant mt-1">Kaja Wiśniewska</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Środa -->
+          <div class="flex flex-col rounded-2xl overflow-hidden bg-surface shadow-xs border border-outline-variant/30">
+            <div class="bg-primary text-on-primary py-3 px-4 text-center font-label-lg text-sm tracking-wide uppercase font-semibold">
+              Środa
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between min-h-[260px] gap-2 bg-surface">
+              <!-- 08:30 -->
+              <div class="p-2.5 rounded-lg bg-surface-container-low shadow-xs border border-outline-variant/20">
+                <span class="font-label-sm text-xs text-primary font-bold block">08:30 – 10:00</span>
+                <h4 class="font-headline-sm text-sm font-serif text-primary font-semibold">HATHA JOGA</h4>
+              </div>
+              <!-- 10:30 -->
+              <div class="p-2.5 rounded-lg bg-surface-container-low shadow-xs border border-outline-variant/20">
+                <span class="font-label-sm text-xs text-primary font-bold block">10:30 – 12:00</span>
+                <h4 class="font-headline-sm text-sm font-serif text-primary font-semibold">HATHA JOGA</h4>
+                <p class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</p>
+              </div>
+              <!-- 17:00 Nidra -->
+              <div class="p-2.5 rounded-lg bg-purple-50 border border-purple-200/50 shadow-xs">
+                <span class="font-label-sm text-xs text-purple-900 font-bold block">17:00 – 18:00</span>
+                <h4 class="font-headline-sm text-sm font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
+                <p class="text-[11px] text-purple-800">Gabrysia</p>
+              </div>
+              <!-- 18:15 Rafał -->
+              <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-200/50 shadow-xs">
+                <span class="font-label-sm text-xs text-amber-900 font-bold block">18:15 – 19:45</span>
+                <h4 class="font-headline-sm text-sm font-serif text-amber-900 font-semibold">JOGA</h4>
+                <p class="text-[11px] text-amber-800">Rafał Kozioł</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Czwartek -->
+          <div class="flex flex-col rounded-2xl overflow-hidden bg-surface shadow-xs border border-outline-variant/30">
+            <div class="bg-primary text-on-primary py-3 px-4 text-center font-label-lg text-sm tracking-wide uppercase font-semibold">
+              Czwartek
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between min-h-[260px] gap-2 bg-surface">
+              <!-- 06:30 -->
+              <div class="p-2.5 rounded-lg bg-surface-container-low shadow-xs border border-outline-variant/20">
+                <span class="font-label-sm text-xs text-primary font-bold block">06:30 – 07:30</span>
+                <h4 class="font-headline-sm text-sm font-serif text-primary font-semibold">HATHA JOGA</h4>
+                <span class="text-[10px] text-primary/80 uppercase">Poranna sesja</span>
+              </div>
+              <!-- 08:30 -->
+              <div class="p-2.5 rounded-lg bg-surface-container-low shadow-xs border border-outline-variant/20">
+                <span class="font-label-sm text-xs text-primary font-bold block">08:30 – 10:00</span>
+                <h4 class="font-headline-sm text-sm font-serif text-primary font-semibold">HATHA JOGA</h4>
+              </div>
+              <!-- 17:00 -->
+              <div class="p-2.5 rounded-lg bg-surface-container-low shadow-xs border border-outline-variant/20">
+                <span class="font-label-sm text-xs text-primary font-bold block">17:00 – 18:30</span>
+                <h4 class="font-headline-sm text-sm font-serif text-primary font-semibold">HATHA JOGA</h4>
+                <p class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</p>
+              </div>
+              <!-- 19:30 Koncert Mis -->
+              <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-200/50 shadow-xs">
+                <span class="font-label-sm text-xs text-amber-900 font-bold block">19:30 – 20:30</span>
+                <h4 class="font-headline-sm text-xs font-serif text-amber-900 font-semibold leading-snug">MISY KRYSZTAŁOWE</h4>
+                <p class="text-[10px] text-amber-800 font-medium">Melody of Shanti</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Piątek -->
+          <div class="flex flex-col rounded-2xl overflow-hidden bg-surface shadow-xs border border-outline-variant/30">
+            <div class="bg-primary text-on-primary py-3 px-4 text-center font-label-lg text-sm tracking-wide uppercase font-semibold">
+              Piątek
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-end min-h-[260px] gap-2.5 bg-surface">
+              <!-- 16:45 Nidra -->
+              <div class="p-3.5 rounded-xl bg-purple-50 border border-purple-200/50 shadow-xs">
+                <span class="font-label-sm text-xs text-purple-900 font-bold block mb-1">16:45 – 17:45</span>
+                <h4 class="font-headline-sm text-base font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
+                <p class="text-xs text-purple-800 mt-1">Gabrysia</p>
+              </div>
+              <!-- 18:00 Joga -->
+              <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200/50 shadow-xs">
+                <span class="font-label-sm text-xs text-amber-900 font-bold block mb-1">18:00 – 19:30</span>
+                <h4 class="font-headline-sm text-base font-serif text-amber-900 font-semibold">JOGA</h4>
+                <p class="text-xs text-amber-800 mt-1">Rafał Kozioł</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Jeden wspólny, czysty baner: Przejdź do rezerwacji -->
+        <div class="mt-8 p-5 sm:p-6 rounded-2xl bg-surface shadow-xs border border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0">
+              <span class="material-symbols-outlined text-[22px]">touch_app</span>
+            </div>
+            <p class="font-body-sm text-sm text-on-surface">
+              Rezerwacje miejsc i sprawdzanie wolnych mat odbywa się online przez portal <strong class="text-primary font-semibold">zarezerwuj.pl/om-shala-joga</strong>.
+            </p>
+          </div>
+          <a class="px-7 py-3 rounded-full bg-primary text-on-primary font-label-md text-xs uppercase tracking-wider hover:bg-primary-container transition-all shrink-0 shadow-sm" 
+             href="https://zarezerwuj.pl/om-shala-joga" rel="noopener noreferrer" target="_blank">
+            Przejdź do rezerwacji
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         PROWADZĄCY (Z nowo wygenerowanymi, pięknymi zdjęciami instruktorów)
+         ======================================================================= -->
+    <section class="w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface" id="nauczyciele">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-2">Serce Studia</span>
+          <h2 class="font-headline-lg text-[28px] sm:text-[36px] lg:text-[40px] font-serif text-primary tracking-wide uppercase">
+            Nasi Prowadzący
+          </h2>
+          <p class="font-body-md text-body-md text-on-surface-variant mt-2">
+            Poznaj instruktorów, którzy z empatią i uważnością przeprowadzą Cię przez każdą asanę, oddech i stan głębokiego relaksu w Jaworze.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          
+          <!-- Kaja Wiśniewska -->
+          <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-square rounded-2xl bg-surface-container overflow-hidden mb-5 relative shadow-xs">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/kaja.jpg" alt="Kaja Wiśniewska Hatha Joga"/>
+                <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-sm text-on-primary text-[11px] font-semibold uppercase tracking-wider">
+                  Hatha Joga
+                </div>
+              </div>
+              <h3 class="font-headline-sm text-lg font-serif text-primary mb-1">Kaja Wiśniewska</h3>
+              <p class="font-label-sm text-xs text-secondary uppercase tracking-wider mb-2 font-semibold">Założycielka • Hatha Joga</p>
+              <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Z wielką wrażliwością i dbałością o anatomię ruchu prowadzi praktykę asan, harmonizację oddechu oraz bezpieczne ugruntowanie w ciele.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-primary text-xs font-medium">
+              <span class="material-symbols-outlined text-[15px]">schedule</span>
+              <span>Pon, Wt, Śr, Czw</span>
+            </div>
+          </div>
+
+          <!-- Gabrysia -->
+          <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-square rounded-2xl bg-purple-50 overflow-hidden mb-5 relative shadow-xs">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/gabrysia.jpg" alt="Gabrysia Joga Nidra"/>
+                <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-purple-900/90 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider">
+                  Joga Nidra
+                </div>
+              </div>
+              <h3 class="font-headline-sm text-lg font-serif text-primary mb-1">Gabrysia</h3>
+              <p class="font-label-sm text-xs text-purple-800 uppercase tracking-wider mb-2 font-semibold">Prowadząca Joga Nidra</p>
+              <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Przewodniczka po krainie snu jogicznego i świadomej relaksacji. Pomoże Ci uwolnić najgłębsze napięcia psychosomatyczne i zregenerować układ nerwowy.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-purple-900 text-xs font-medium">
+              <span class="material-symbols-outlined text-[15px]">schedule</span>
+              <span>Środy 17:00 & Piątki 16:45</span>
+            </div>
+          </div>
+
+          <!-- Rafał Kozioł -->
+          <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-square rounded-2xl bg-amber-50 overflow-hidden mb-5 relative shadow-xs">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/rafal.jpg" alt="Rafał Kozioł Instruktor Jogi"/>
+                <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-amber-800/90 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider">
+                  Joga
+                </div>
+              </div>
+              <h3 class="font-headline-sm text-lg font-serif text-primary mb-1">Rafał Kozioł</h3>
+              <p class="font-label-sm text-xs text-secondary uppercase tracking-wider mb-2 font-semibold">Instruktor Jogi</p>
+              <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Łączy siłę z płynnością i uważnością. Praktyka ukierunkowana na budowanie stabilności kręgosłupa, mobilność i wytrzymałość mentalną.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-secondary text-xs font-medium">
+              <span class="material-symbols-outlined text-[15px]">schedule</span>
+              <span>Środy 18:15 & Piątki 18:00</span>
+            </div>
+          </div>
+
+          <!-- Melody of Shanti -->
+          <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-square rounded-2xl bg-surface-container overflow-hidden mb-5 relative shadow-xs">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/shanti.jpg" alt="Melody of Shanti Misy Kryształowe"/>
+                <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-secondary/90 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider">
+                  Misy & Dźwięk
+                </div>
+              </div>
+              <h3 class="font-headline-sm text-lg font-serif text-primary mb-1">Melody of Shanti</h3>
+              <p class="font-label-sm text-xs text-secondary uppercase tracking-wider mb-2 font-semibold">Kąpiele Dźwiękowe</p>
+              <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Głęboka terapia wibracją kryształowych mis 432 Hz, dzwonków koshi i gongów. Kojąca podróż oczyszczająca pole energetyczne.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-secondary text-xs font-medium">
+              <span class="material-symbols-outlined text-[15px]">schedule</span>
+              <span>Czwartki 19:30</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         PIERWSZY RAZ NA MACIE & CENNIK (Zamiast "Rezerwacja online" -> "Cennik")
+         ======================================================================= -->
+    <section class="w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface-container-low" id="cennik">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-6 space-y-5">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Dla Początkujących</span>
+          <h2 class="font-headline-lg text-[28px] sm:text-[34px] font-serif text-primary tracking-wide">
+            Pierwszy raz na macie w Om Shala?
+          </h2>
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Nie potrzebujesz wcześniejszego doświadczenia ani nadzwyczajnej giętkości. Przyjdź taka / taki, jaki jesteś. Zadbaliśmy o każdy szczegół Twojego komfortu.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-surface shadow-xs border border-outline-variant/20">
+              <div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-[18px]">checkroom</span>
+              </div>
+              <div>
+                <h4 class="font-headline-sm text-base text-primary font-semibold">Wygodny strój</h4>
+                <p class="font-body-sm text-xs text-on-surface-variant">Ubierz się w luźne, niekrępujące ruchów ubranie. Ćwiczymy boso na matach.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-surface shadow-xs border border-outline-variant/20">
+              <div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-[18px]">sports_gymnastics</span>
+              </div>
+              <div>
+                <h4 class="font-headline-sm text-base text-primary font-semibold">Maty i pomoce na miejscu</h4>
+                <p class="font-body-sm text-xs text-on-surface-variant">W studiu czekają na Ciebie profesjonalne maty, klocki, paski, wałki oraz koce.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-surface shadow-xs border border-outline-variant/20">
+              <div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-[18px]">schedule</span>
+              </div>
+              <div>
+                <h4 class="font-headline-sm text-base text-primary font-semibold">Przyjdź 10 minut wcześniej</h4>
+                <p class="font-body-sm text-xs text-on-surface-variant">Spokojnie napij się ziołowej herbaty, wycisz umysł i zapoznaj z przestrzenią przed rozpoczęciem sesji.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karta Cennik (Zamiast Rezerwacja Online) -->
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl bg-surface p-6 sm:p-8 shadow-sm border border-outline-variant/30 flex flex-col justify-between relative overflow-hidden">
+            <div class="space-y-5">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-xs uppercase tracking-wider font-semibold">
+                <span class="material-symbols-outlined text-[15px]">payments</span> Cennik
+              </div>
+
+              <h3 class="font-headline-md text-2xl font-serif text-primary">
+                Dołącz do kameralnych grup (max 6 osób)
+              </h3>
+
+              <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+                Zajęcia w Om Shala Joga odbywają się w małych grupach do 6 osób. Gwarantuje to indywidualne podejście nauczyciela, ciszę i pełne poczucie bezpieczeństwa na macie.
+              </p>
+
+              <!-- Przejrzysta lista karnetów i wejściówek -->
+              <div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/30 space-y-3">
+                <div class="flex justify-between items-center text-primary font-body-sm text-sm">
+                  <span>Pojedyncze wejście</span>
+                  <span class="font-headline-sm text-base font-semibold">45 zł</span>
+                </div>
+                <div class="w-full h-px bg-outline-variant/30"></div>
+                <div class="flex justify-between items-center text-primary font-body-sm text-sm">
+                  <span>Karnet 4 wejścia (ważny miesiąc)</span>
+                  <span class="font-headline-sm text-base font-semibold">150 zł</span>
+                </div>
+                <div class="w-full h-px bg-outline-variant/30"></div>
+                <div class="flex justify-between items-center text-primary font-body-sm text-sm">
+                  <span>Karnet 8 wejść (ważny miesiąc)</span>
+                  <span class="font-headline-sm text-base font-semibold">260 zł</span>
+                </div>
+              </div>
+
+              <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                <a class="flex-1 py-3 px-6 rounded-full bg-primary text-on-primary font-label-md text-xs uppercase tracking-wider text-center shadow-md hover:bg-primary-container transition-all" 
+                   href="https://zarezerwuj.pl/om-shala-joga" rel="noopener noreferrer" target="_blank">
+                  Zarezerwuj miejsce
+                </a>
+                <a class="py-3 px-6 rounded-full bg-surface-container text-primary font-label-md text-xs uppercase tracking-wider text-center hover:bg-surface-variant transition-all font-semibold" 
+                   href="tel:512748316">
+                  Zadzwoń: 512 748 316
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         LOKALIZACJA I KONTAKT
+         ======================================================================= -->
+    <section class="w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface" id="kontakt">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Adres & Wizyta</span>
+          <h2 class="font-headline-lg text-[28px] sm:text-[36px] font-serif text-primary tracking-wide">
+            Zapraszamy do studia
+          </h2>
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Nasza Shala znajduje się w dogodnej, a jednocześnie spokojnej części Jawora przy ulicy Fryderyka Chopina.
+          </p>
+
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30">
+              <span class="material-symbols-outlined text-primary text-[24px]">pin_drop</span>
+              <div>
+                <p class="font-headline-sm text-base text-primary font-semibold">Om Shala Joga Jawor</p>
+                <p class="font-body-sm text-xs text-on-surface-variant">ul. Fryderyka Chopina 13/11, 59-400 Jawor</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30">
+              <span class="material-symbols-outlined text-secondary text-[24px]">call</span>
+              <div>
+                <p class="font-headline-sm text-base text-primary font-semibold">Telefon do studia</p>
+                <a class="font-body-sm text-xs text-primary hover:underline font-bold" href="tel:+48512748316">+48 512 748 316</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30">
+              <span class="material-symbols-outlined text-primary text-[24px]">calendar_month</span>
+              <div>
+                <p class="font-headline-sm text-base text-primary font-semibold">Rezerwacje online</p>
+                <a class="font-body-sm text-xs text-secondary hover:underline font-medium" href="https://zarezerwuj.pl/om-shala-joga" target="_blank" rel="noopener noreferrer">zarezerwuj.pl/om-shala-joga</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interaktywna mapa Google Jawor -->
+        <div class="lg:col-span-7">
+          <div class="w-full h-[360px] sm:h-[400px] rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 relative">
+            <iframe 
+              title="Lokalizacja Om Shala Joga Jawor" 
+              src="https://maps.google.com/maps?q=Chopina%2013,%20Jawor,%20Poland&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       STOPKA (FOOTER)
+       ======================================================================= -->
+  <footer class="w-full bg-surface-container-low text-on-surface border-t border-outline-variant/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- O studiu -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <img alt="Om Shala Joga Logo" class="h-8 w-8 object-contain" src="assets/images/mandala-clean.png"/>
+          <h3 class="font-headline-sm text-lg text-primary font-serif">Om Shala Joga</h3>
+        </div>
+        <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+          Kameralna przestrzeń oddechu, asan i medytacji w sercu Jawora. Miejsce wyciszenia stworzone z myślą o Twoim ciele i umyśle.
+        </p>
+      </div>
+
+      <!-- Godziny studia -->
+      <div class="space-y-3">
+        <h4 class="font-headline-sm text-base text-primary font-semibold">Godziny otwarcia</h4>
+        <ul class="space-y-1.5 font-body-sm text-xs text-on-surface-variant">
+          <li><strong>Poniedziałek:</strong> 16:00 – 21:00</li>
+          <li><strong>Wtorek:</strong> 16:00 – 21:00</li>
+          <li><strong>Środa:</strong> 08:00 – 19:00</li>
+          <li><strong>Czwartek:</strong> 08:00 – 19:00</li>
+          <li><strong>Pt – Nd:</strong> Sesje wg grafiku / warsztaty</li>
+        </ul>
+      </div>
+
+      <!-- Szybkie linki -->
+      <div class="space-y-3">
+        <h4 class="font-headline-sm text-base text-primary font-semibold">Nawigacja</h4>
+        <ul class="space-y-1.5 font-body-sm text-xs text-on-surface-variant">
+          <li><a class="hover:text-primary transition-colors" href="#dlaczego-joga">Dlaczego joga?</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#harmonogram">Harmonogram zajęć</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#nauczyciele">Nasi instruktorzy</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#cennik">Cennik</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#kontakt">Dojazd i kontakt</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontakt i social media -->
+      <div class="space-y-3">
+        <h4 class="font-headline-sm text-base text-primary font-semibold">Kontakt</h4>
+        <p class="font-body-sm text-xs text-on-surface-variant">
+          ul. Chopina 13/11<br>
+          59-400 Jawor<br>
+          Tel: <a href="tel:+48512748316" class="text-primary font-semibold hover:underline">+48 512 748 316</a>
+        </p>
+        <div class="pt-2">
+          <a href="https://www.instagram.com/omshalajoga/" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:text-secondary transition-colors">
+            <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+            Obserwuj na Instagramie @omshalajoga
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Prawa autorskie -->
+    <div class="w-full bg-surface-container py-4 px-4 sm:px-6 lg:px-12 text-center text-xs text-on-surface-variant border-t border-outline-variant/20">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>© 2026 Om Shala Joga • Jawor, ul. Chopina 13/11.</span>
+        <span class="text-primary font-medium">Namaste Jawor</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Prosty skrypt obsługi menu mobilnego na telefony i tablety -->
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          hamburgerIcon.textContent = 'close';
+        } else {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.textContent = 'menu';
+        }
+      });
+
+      // Zamykaj menu po kliknięciu w link
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.textContent = 'menu';
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
