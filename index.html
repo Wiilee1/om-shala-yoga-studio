@@ -156,7 +156,40 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+  <!-- Local and CDN Material Symbols & Icons Fallback Engine -->
+  <style>
+    @font-face {
+      font-family: 'Material Symbols Outlined';
+      font-style: normal;
+      font-weight: 100 700;
+      font-display: block;
+      src: url('assets/fonts/material-symbols-outlined.woff2') format('woff2'),
+           url('assets/fonts/material-symbols-outlined.woff') format('woff'),
+           url('https://fonts.gstatic.com/s/materialsymbolsoutlined/v371/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOejbd5zrDAt.woff2') format('woff2');
+    }
+
+    .material-symbols-outlined,
+    .material-icons {
+      font-family: 'Material Symbols Outlined', 'Material Icons' !important;
+      font-weight: normal !important;
+      font-style: normal !important;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none !important;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga' 1 !important;
+      font-feature-settings: 'liga' 1 !important;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+  </style>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -558,347 +591,231 @@
             </p>
           </div>
 
-          <!-- Legenda styli zajęć -->
-          <div class="flex flex-wrap items-center gap-2 text-xs">
-            <span class="px-3 py-1 rounded-full bg-surface text-primary font-medium shadow-xs flex items-center gap-1.5 border border-outline-variant/20">
-              <span class="w-2 h-2 rounded-full bg-primary"></span> Hatha Joga (Kaja)
-            </span>
-            <span class="px-3 py-1 rounded-full bg-surface text-purple-900 font-medium shadow-xs flex items-center gap-1.5 border border-purple-200/50">
-              <span class="w-2 h-2 rounded-full bg-purple-700"></span> Joga Nidra (Gabrysia)
-            </span>
-            <span class="px-3 py-1 rounded-full bg-surface text-[#93481e] font-medium shadow-xs flex items-center gap-1.5 border border-[#c46830]/30">
-              <span class="w-2 h-2 rounded-full bg-[#c46830]"></span> Joga (Rafał)
-            </span>
-            <span class="px-3 py-1 rounded-full bg-surface text-amber-900 font-medium shadow-xs flex items-center gap-1.5 border border-amber-300/40">
-              <span class="w-2 h-2 rounded-full bg-amber-600"></span> Misy Kryształowe
-            </span>
-            <span class="px-3 py-1 rounded-full bg-red-50 text-red-700 font-medium shadow-xs flex items-center gap-1.5 border border-red-200/70">
-              <span class="w-3 h-[2.5px] bg-red-500 rounded-full"></span> Czerwona linia: aktualny czas
-            </span>
+          <!-- Legenda styli zajęć: Minimalistyczna -->
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-surface-variant">
+            <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary"></span> Hatha Joga</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-600"></span> Joga Nidra</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#c46830]"></span> Joga z Rafałem</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-600"></span> Misy Kryształowe</span>
           </div>
         </div>
 
         <!-- ===============================================================
-             DESKTOP / TABLET TIMETABLE: GODZINOWO WYRÓWNANY GRAFIK TYGODNIOWY
-             Każdy slot godzinowy znajduje się dokładnie w tym samym rzędzie!
+             DESKTOP / TABLET TIMETABLE: MINIMALISTYCZNY I CZYSTY UKŁAD
              =============================================================== -->
         <div class="hidden md:block rounded-3xl bg-surface shadow-sm border border-outline-variant/30 overflow-hidden">
           
-          <!-- Nagłówki Dni Tygodnia ze wskaźnikami -->
+          <!-- Nagłówki Dni Tygodnia -->
           <div class="grid grid-cols-6 bg-[#004541] text-white text-center font-label-md text-xs tracking-wider uppercase font-semibold">
-            <div class="py-3.5 px-3 border-r border-white/10 text-[#abefe8] flex items-center justify-center gap-1.5 select-none">
-              <span class="material-symbols-outlined text-[15px]">schedule</span> Godzina
-            </div>
-            <div id="sched-th-1" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Poniedziałek</div>
-            <div id="sched-th-2" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Wtorek</div>
-            <div id="sched-th-3" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Środa</div>
-            <div id="sched-th-4" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Czwartek</div>
-            <div id="sched-th-5" class="sched-col-head py-3.5 px-3 transition-all relative flex items-center justify-center select-none">Piątek</div>
+            <div class="py-3 px-3 border-r border-white/10 text-[#abefe8] flex items-center justify-center font-sans select-none">Godzina</div>
+            <div id="sched-th-1" class="sched-col-head py-3 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Poniedziałek</div>
+            <div id="sched-th-2" class="sched-col-head py-3 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Wtorek</div>
+            <div id="sched-th-3" class="sched-col-head py-3 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Środa</div>
+            <div id="sched-th-4" class="sched-col-head py-3 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Czwartek</div>
+            <div id="sched-th-5" class="sched-col-head py-3 px-3 transition-all relative flex items-center justify-center select-none">Piątek</div>
           </div>
 
           <div id="sched-grid-body" class="relative divide-y divide-outline-variant/20 bg-surface">
 
-            <!-- Dynamiczny Wskaźnik Czasu: Czysta czerwona linia w harmonogramie -->
+            <!-- Dynamiczny Wskaźnik Czasu: Czysta czerwona linia w dni robocze -->
             <div id="sched-live-line" class="absolute z-30 pointer-events-none transition-all duration-300 ease-out" style="display: none; left: 16.6667%; width: 16.6667%; top: 0px;">
-              <div class="w-full h-[2.5px] bg-red-500 shadow-xs rounded-full"></div>
+              <div class="w-full h-[2px] bg-red-500 shadow-xs rounded-full"></div>
             </div>
 
-            <!-- Rząd 1: Poranek wczesny 06:30 – 07:30 -->
-            <div id="sched-row-1" class="sched-row grid grid-cols-6 items-stretch min-h-[76px]">
-              <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
-                <span class="text-xs font-bold text-primary font-mono">06:30</span>
-                <span class="text-[10px] text-on-surface-variant font-mono">07:30</span>
+            <!-- Rząd 1: 06:30 -->
+            <div id="sched-row-1" class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
+              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low/60 border-r border-outline-variant/20">
+                <span class="text-xs font-semibold text-primary font-mono">06:30</span>
               </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Czwartek 06:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">06:30–07:30</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">06:30–07:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Poranna sesja</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">60 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Poranna sesja</span>
                 </div>
               </div>
-              <div class="p-2 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 flex items-center justify-center text-xs text-outline-variant/50">—</div>
             </div>
 
-            <!-- Rząd 2: Rano 08:30 – 10:00 -->
-            <div id="sched-row-2" class="sched-row grid grid-cols-6 items-stretch min-h-[76px]">
-              <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
-                <span class="text-xs font-bold text-primary font-mono">08:30</span>
-                <span class="text-[10px] text-on-surface-variant font-mono">10:00</span>
+            <!-- Rząd 2: 08:30 -->
+            <div id="sched-row-2" class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
+              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low/60 border-r border-outline-variant/20">
+                <span class="text-xs font-semibold text-primary font-mono">08:30</span>
               </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Środa 08:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">08:30–10:00</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">08:30–10:00</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Sesja poranna</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Poranna sesja</span>
                 </div>
               </div>
               <!-- Czwartek 08:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">08:30–10:00</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">08:30–10:00</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Sesja poranna</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Poranna sesja</span>
                 </div>
               </div>
-              <div class="p-2 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 flex items-center justify-center text-xs text-outline-variant/50">—</div>
             </div>
 
-            <!-- Rząd 3: Przedpołudnie 10:30 – 12:00 -->
-            <div id="sched-row-3" class="sched-row grid grid-cols-6 items-stretch min-h-[76px]">
-              <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
-                <span class="text-xs font-bold text-primary font-mono">10:30</span>
-                <span class="text-[10px] text-on-surface-variant font-mono">12:00</span>
+            <!-- Rząd 3: 10:30 -->
+            <div id="sched-row-3" class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
+              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low/60 border-r border-outline-variant/20">
+                <span class="text-xs font-semibold text-primary font-mono">10:30</span>
               </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Środa 10:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">10:30–12:00</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">10:30–12:00</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Kaja Wiśniewska</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</span>
                 </div>
               </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
-              <div class="p-2 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
+              <div class="p-2 flex items-center justify-center text-xs text-outline-variant/50">—</div>
             </div>
 
-            <!-- Rząd Przerwy Popołudniowej: 12:00 – 16:45 (Przerwa w studio) -->
-            <div id="sched-row-break" class="sched-row grid grid-cols-6 items-stretch min-h-[44px] bg-surface-container-low/40 border-y border-dashed border-outline-variant/30">
-              <div class="p-2 flex flex-col justify-center items-center text-center bg-surface-container-low/70 border-r border-outline-variant/20 h-full">
-                <span class="text-xs font-bold text-primary font-mono">12:00</span>
-                <span class="text-[10px] text-on-surface-variant font-mono">16:45</span>
-              </div>
-              <div class="col-span-5 px-4 text-xs italic tracking-wide text-on-surface-variant/70 text-center flex items-center justify-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-outline-variant/50"></span>
-                <span>Przerwa popołudniowa w studio (12:00 – 16:45)</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-outline-variant/50"></span>
-              </div>
+            <!-- Rząd Przerwy Popołudniowej: Czysty, spokojny separator -->
+            <div id="sched-row-break" class="sched-row grid grid-cols-6 items-center min-h-[38px] bg-surface-container-low/30 border-y border-outline-variant/15 text-xs text-on-surface-variant/60">
+              <div class="p-2 text-center border-r border-outline-variant/20 font-mono text-[11px]">12:00</div>
+              <div class="col-span-5 text-center italic tracking-wider font-light">Przerwa popołudniowa (12:00 – 16:45)</div>
             </div>
 
-            <!-- Rząd 4: Popołudnie 16:45 / 17:00 – 18:00 / 18:30 -->
-            <div id="sched-row-4" class="sched-row grid grid-cols-6 items-stretch min-h-[76px]">
-              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
-                <span class="text-xs font-bold text-primary font-mono">16:45 / 17:00</span>
-                <span class="text-[9.5px] text-on-surface-variant font-mono">do 18:00/18:30</span>
+            <!-- Rząd 4: 17:00 -->
+            <div id="sched-row-4" class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
+              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low/60 border-r border-outline-variant/20">
+                <span class="text-xs font-semibold text-primary font-mono">17:00</span>
               </div>
               <!-- Poniedziałek -->
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Wtorek 17:00 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">17:00–18:30</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">17:00–18:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Kaja Wiśniewska</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</span>
                 </div>
               </div>
               <!-- Środa 17:00 Joga Nidra -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50 border border-purple-200 shadow-2xs hover:bg-purple-100/70 transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50/70 border border-purple-200/60 hover:border-purple-300 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-purple-800">17:00–18:00</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">Joga Nidra</h4>
+                    <span class="text-[10px] font-mono font-medium text-purple-800">17:00–18:00</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-purple-800">Gabrysia</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 font-semibold">60 min</span>
-                  </div>
+                  <span class="text-[11px] text-purple-700/80">Gabrysia</span>
                 </div>
               </div>
               <!-- Czwartek 17:00 Hatha Joga -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">17:00–18:30</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">17:00–18:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Kaja Wiśniewska</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</span>
                 </div>
               </div>
               <!-- Piątek 16:45 Joga Nidra -->
               <div class="p-2 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50 border border-purple-200 shadow-2xs hover:bg-purple-100/70 transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50/70 border border-purple-200/60 hover:border-purple-300 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-purple-800">16:45–17:45</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">Joga Nidra</h4>
+                    <span class="text-[10px] font-mono font-medium text-purple-800">16:45–17:45</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-purple-800">Gabrysia</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 font-semibold">60 min</span>
-                  </div>
+                  <span class="text-[11px] text-purple-700/80">Gabrysia</span>
                 </div>
               </div>
             </div>
 
-            <!-- Rząd 5: Wczesny wieczór 18:00 / 18:15 – 19:30 / 19:45 -->
-            <div id="sched-row-5" class="sched-row grid grid-cols-6 items-stretch min-h-[76px]">
-              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
-                <span class="text-xs font-bold text-primary font-mono">18:00 / 18:15</span>
-                <span class="text-[9.5px] text-on-surface-variant font-mono">do 19:30/19:45</span>
+            <!-- Rząd 5: 18:00 -->
+            <div id="sched-row-5" class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
+              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low/60 border-r border-outline-variant/20">
+                <span class="text-xs font-semibold text-primary font-mono">18:00</span>
               </div>
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <span class="text-[11px] text-outline-variant/60 italic">—</span>
-              </div>
-              <!-- Wtorek kontynuacja -->
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <div class="w-full py-2 px-2 rounded-lg bg-surface-container-low/80 border border-dashed border-primary/25 text-center flex items-center justify-center gap-1 text-[11px] text-primary/80 font-medium">
-                  <span class="text-xs">↳</span>
-                  <span>trwa sesja do 18:30</span>
-                </div>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Środa 18:15 Rafał Kozioł -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] shadow-2xs hover:bg-[#ffeedd] transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-[#fff9f5] border border-[#f3d3c1] hover:border-[#e2b39a] transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-[#93481e] font-semibold">JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-[#93481e] px-1 rounded bg-[#f5dfd2]/60">18:15–19:45</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-[#93481e] font-semibold">Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-[#93481e]">18:15–19:45</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-[#b35e2c]">Rafał Kozioł</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-[#f5dfd2] text-[#93481e] font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-[#b35e2c]">Rafał Kozioł</span>
                 </div>
               </div>
-              <!-- Czwartek kontynuacja -->
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <div class="w-full py-2 px-2 rounded-lg bg-surface-container-low/80 border border-dashed border-primary/25 text-center flex items-center justify-center gap-1 text-[11px] text-primary/80 font-medium">
-                  <span class="text-xs">↳</span>
-                  <span>trwa sesja do 18:30</span>
-                </div>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Piątek 18:00 Rafał Kozioł -->
               <div class="p-2 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] shadow-2xs hover:bg-[#ffeedd] transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-[#fff9f5] border border-[#f3d3c1] hover:border-[#e2b39a] transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-[#93481e] font-semibold">JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-[#93481e] px-1 rounded bg-[#f5dfd2]/60">18:00–19:30</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-[#93481e] font-semibold">Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-[#93481e]">18:00–19:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-[#b35e2c]">Rafał Kozioł</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-[#f5dfd2] text-[#93481e] font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-[#b35e2c]">Rafał Kozioł</span>
                 </div>
               </div>
             </div>
 
-            <!-- Rząd 6: Wieczór 19:00 / 19:30 – 20:30 (Hatha Joga & Misy) -->
-            <div id="sched-row-6" class="sched-row grid grid-cols-6 items-stretch min-h-[76px]">
-              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
-                <span class="text-xs font-bold text-primary font-mono">19:00 / 19:30</span>
-                <span class="text-[9.5px] text-on-surface-variant font-mono">do 20:30</span>
+            <!-- Rząd 6: 19:00 -->
+            <div id="sched-row-6" class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
+              <div class="p-3 flex flex-col justify-center items-center text-center bg-surface-container-low/60 border-r border-outline-variant/20">
+                <span class="text-xs font-semibold text-primary font-mono">19:00</span>
               </div>
               <!-- Poniedziałek 19:00 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">19:00–20:30</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">19:00–20:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Kaja Wiśniewska</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</span>
                 </div>
               </div>
               <!-- Wtorek 19:00 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-primary">19:00–20:30</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">Hatha Joga</h4>
+                    <span class="text-[10px] font-mono font-medium text-primary">19:00–20:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[11px]">
-                    <span class="text-on-surface-variant">Kaja Wiśniewska</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-semibold">90 min</span>
-                  </div>
+                  <span class="text-[11px] text-on-surface-variant">Kaja Wiśniewska</span>
                 </div>
               </div>
-              <!-- Środa kontynuacja Joga z Rafałem -->
-              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center">
-                <div class="w-full py-2 px-2 rounded-lg bg-[#fff8f3]/80 border border-dashed border-[#f0cbb5] text-center flex items-center justify-center gap-1 text-[11px] text-[#93481e] font-medium">
-                  <span class="text-xs">↳</span>
-                  <span>trwa sesja do 19:45</span>
-                </div>
-              </div>
+              <div class="p-2 border-r border-outline-variant/20 flex items-center justify-center text-xs text-outline-variant/50">—</div>
               <!-- Czwartek 19:30 Misy Kryształowe -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-amber-50 border border-amber-200 shadow-2xs hover:bg-amber-100/70 transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60 hover:border-amber-300 transition-all flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-amber-900 font-semibold leading-tight">MISY KRYSZTAŁOWE</h4>
-                    <span class="text-[9.5px] font-mono font-bold text-amber-800 px-1 rounded bg-amber-100/70">19:30–20:30</span>
+                    <h4 class="font-headline-sm text-[11px] font-serif text-amber-900 font-semibold leading-none">Misy Kryształowe</h4>
+                    <span class="text-[9px] font-mono font-medium text-amber-800 shrink-0">19:30–20:30</span>
                   </div>
-                  <div class="flex items-center justify-between text-[10.5px]">
-                    <span class="text-amber-800 font-medium">Melody of Shanti</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-900 font-semibold">60 min</span>
-                  </div>
+                  <span class="text-[11px] text-amber-700/80">Melody of Shanti</span>
                 </div>
               </div>
-              <!-- Piątek kontynuacja Joga z Rafałem -->
-              <div class="p-2 flex items-center justify-center">
-                <div class="w-full py-2 px-2 rounded-lg bg-[#fff8f3]/80 border border-dashed border-[#f0cbb5] text-center flex items-center justify-center gap-1 text-[11px] text-[#93481e] font-medium">
-                  <span class="text-xs">↳</span>
-                  <span>trwa sesja do 19:30</span>
-                </div>
-              </div>
+              <div class="p-2 flex items-center justify-center text-xs text-outline-variant/50">—</div>
             </div>
 
           </div>
