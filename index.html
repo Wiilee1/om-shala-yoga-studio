@@ -250,6 +250,31 @@
       }
     };
   </script>
+  <style>
+    /* Wskaźnik "Gdzie jesteśmy w tygodniu" */
+    .sched-col-active-head {
+      border-top: 4px solid #e0b084 !important;
+      background-color: #003632 !important;
+    }
+    .sched-cell-active {
+      background-color: rgba(0, 69, 65, 0.04) !important;
+      border-left: 2px solid rgba(0, 69, 65, 0.35) !important;
+      border-right: 2px solid rgba(0, 69, 65, 0.35) !important;
+    }
+    .sched-cell-active .sched-session-card {
+      box-shadow: 0 4px 14px -2px rgba(0, 69, 65, 0.16) !important;
+      border-color: rgba(0, 69, 65, 0.5) !important;
+    }
+    .sched-mobile-active {
+      border-left: 6px solid #004541 !important;
+      box-shadow: 0 8px 24px -4px rgba(0, 69, 65, 0.18) !important;
+    }
+    .day-tab-active {
+      background-color: #004541 !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 6px rgba(0, 69, 65, 0.25) !important;
+    }
+  </style>
 </head>
 <body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
 
@@ -546,27 +571,113 @@
         </div>
 
         <!-- ===============================================================
+             WSKAŹNIK POZYCJI W TYGODNIU (GDZIE JESTEŚMY W TYGODNIU)
+             Interaktywna linia postępu tygodnia + wskaźnik bieżącego dnia
+             =============================================================== -->
+        <div class="mb-8 p-4 sm:p-5 rounded-2xl bg-surface border border-outline-variant/30 shadow-xs">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            
+            <!-- Lewa strona: Dynamiczny status dnia -->
+            <div class="flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
+                <span class="material-symbols-outlined text-[22px]">calendar_today</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[11px] font-bold uppercase tracking-widest text-secondary">Gdzie jesteśmy w tygodniu</span>
+                  <span id="week-live-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-[#004541] text-white tracking-wide uppercase shadow-2xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span id="week-live-badge-text">Dziś</span>
+                  </span>
+                </div>
+                <p id="week-live-desc" class="text-xs sm:text-sm text-on-surface font-medium mt-0.5">
+                  Sprawdzanie aktualnego dnia...
+                </p>
+              </div>
+            </div>
+
+            <!-- Prawa strona: Przyciski dni tygodnia z interaktywnym podglądem -->
+            <div class="flex items-center gap-1 bg-surface-container-low p-1 sm:p-1.5 rounded-xl border border-outline-variant/20 shrink-0 self-stretch md:self-auto justify-between sm:justify-start">
+              <button type="button" onclick="selectDay(1)" data-day-btn="1" class="day-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-all">Pn</button>
+              <button type="button" onclick="selectDay(2)" data-day-btn="2" class="day-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-all">Wt</button>
+              <button type="button" onclick="selectDay(3)" data-day-btn="3" class="day-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-all">Śr</button>
+              <button type="button" onclick="selectDay(4)" data-day-btn="4" class="day-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-all">Czw</button>
+              <button type="button" onclick="selectDay(5)" data-day-btn="5" class="day-tab-btn px-2 sm:px-2.5 py-1 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-all">Pt</button>
+              <button type="button" onclick="selectLiveDay()" id="btn-live-reset" title="Przywróć aktualny czas rzeczywisty" class="ml-0.5 sm:ml-1 px-2 sm:px-2.5 py-1 rounded-lg text-[10px] uppercase font-bold text-secondary hover:text-primary hover:bg-surface transition-all flex items-center gap-1 border border-outline-variant/20 shrink-0">
+                <span class="material-symbols-outlined text-[13px]">my_location</span> Dziś
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Oś Czasu Tygodnia (Linia Tygodnia ze wskaźnikiem pozycji) -->
+          <div class="mt-4 pt-3 border-t border-outline-variant/20">
+            <div class="relative w-full">
+              <!-- Szyna linii tygodnia -->
+              <div class="h-2.5 w-full bg-surface-container rounded-full overflow-hidden relative">
+                <!-- Wypełnienie linii postępu tygodnia -->
+                <div id="week-timeline-fill" class="h-full bg-gradient-to-r from-secondary via-primary to-[#2dd4bf] rounded-full transition-all duration-700 ease-out" style="width: 50%;"></div>
+              </div>
+
+              <!-- Pływający wskaźnik / pinezka aktualnej pozycji w tygodniu -->
+              <div id="week-marker-pin" class="absolute -top-1.5 transition-all duration-700 ease-out -translate-x-1/2 flex flex-col items-center pointer-events-none" style="left: 50%;">
+                <span class="relative flex h-5 w-5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
+                  <span class="relative inline-flex rounded-full h-5 w-5 bg-[#004541] border-2 border-white shadow-md items-center justify-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#abefe8]"></span>
+                  </span>
+                </span>
+              </div>
+
+              <!-- Etykiety pod linią -->
+              <div class="flex justify-between items-center text-[10px] sm:text-[10.5px] font-semibold text-on-surface-variant mt-2 px-0.5">
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+                  <span>Pon<span class="hidden sm:inline">iedziałek</span></span>
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+                  <span>Wt<span class="hidden sm:inline">orek</span></span>
+                </span>
+                <span class="flex items-center gap-1 text-primary font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span>Śr<span class="hidden sm:inline">oda (połowa)</span></span>
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+                  <span>Czw<span class="hidden sm:inline">artek</span></span>
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+                  <span>Pt<span class="hidden sm:inline">iątek</span></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===============================================================
              DESKTOP / TABLET TIMETABLE: GODZINOWO WYRÓWNANY GRAFIK TYGODNIOWY
              Każdy slot godzinowy znajduje się dokładnie w tym samym rzędzie!
              =============================================================== -->
         <div class="hidden md:block rounded-3xl bg-surface shadow-sm border border-outline-variant/30 overflow-hidden">
           
-          <!-- Nagłówki Dni Tygodnia -->
+          <!-- Nagłówki Dni Tygodnia ze wskaźnikami -->
           <div class="grid grid-cols-6 bg-[#004541] text-white text-center font-label-md text-xs tracking-wider uppercase font-semibold">
             <div class="py-3.5 px-3 border-r border-white/10 text-[#abefe8] flex items-center justify-center gap-1.5">
               <span class="material-symbols-outlined text-[15px]">schedule</span> Godzina
             </div>
-            <div class="py-3.5 px-3 border-r border-white/10">Poniedziałek</div>
-            <div class="py-3.5 px-3 border-r border-white/10">Wtorek</div>
-            <div class="py-3.5 px-3 border-r border-white/10">Środa</div>
-            <div class="py-3.5 px-3 border-r border-white/10">Czwartek</div>
-            <div class="py-3.5 px-3">Piątek</div>
+            <div id="sched-th-1" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center">Poniedziałek</div>
+            <div id="sched-th-2" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center">Wtorek</div>
+            <div id="sched-th-3" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center">Środa</div>
+            <div id="sched-th-4" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center">Czwartek</div>
+            <div id="sched-th-5" class="sched-col-head py-3.5 px-3 transition-all relative flex items-center justify-center">Piątek</div>
           </div>
 
           <div class="divide-y divide-outline-variant/20 bg-surface">
 
             <!-- Rząd 1: Poranek wczesny 06:30 – 07:30 -->
-            <div class="grid grid-cols-6 items-stretch min-h-[72px]">
+            <div class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
               <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
                 <span class="text-xs font-bold text-primary font-mono">06:30</span>
                 <span class="text-[10px] text-on-surface-variant font-mono">07:30</span>
@@ -582,7 +693,7 @@
               </div>
               <!-- Czwartek 06:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <span class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</span>
                     <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary uppercase font-bold tracking-wider">Poranek</span>
@@ -596,7 +707,7 @@
             </div>
 
             <!-- Rząd 2: Rano 08:30 – 10:00 -->
-            <div class="grid grid-cols-6 items-stretch min-h-[72px]">
+            <div class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
               <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
                 <span class="text-xs font-bold text-primary font-mono">08:30</span>
                 <span class="text-[10px] text-on-surface-variant font-mono">10:00</span>
@@ -609,14 +720,14 @@
               </div>
               <!-- Środa 08:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                   <span class="text-[11px] text-on-surface-variant mt-0.5">Sesja poranna</span>
                 </div>
               </div>
               <!-- Czwartek 08:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                   <span class="text-[11px] text-on-surface-variant mt-0.5">Sesja poranna</span>
                 </div>
@@ -627,7 +738,7 @@
             </div>
 
             <!-- Rząd 3: Przedpołudnie 10:30 – 12:00 -->
-            <div class="grid grid-cols-6 items-stretch min-h-[72px]">
+            <div class="sched-row grid grid-cols-6 items-stretch min-h-[72px]">
               <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
                 <span class="text-xs font-bold text-primary font-mono">10:30</span>
                 <span class="text-[10px] text-on-surface-variant font-mono">12:00</span>
@@ -640,7 +751,7 @@
               </div>
               <!-- Środa 10:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                   <span class="text-[11px] text-on-surface-variant mt-0.5">Kaja Wiśniewska</span>
                 </div>
@@ -654,7 +765,7 @@
             </div>
 
             <!-- Rząd 4: Popołudnie 16:45 / 17:00 – 18:30 (Wspólny rząd popołudniowy) -->
-            <div class="grid grid-cols-6 items-stretch min-h-[82px] bg-surface-container-lowest/40">
+            <div class="sched-row grid grid-cols-6 items-stretch min-h-[82px] bg-surface-container-lowest/40">
               <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
                 <span class="text-xs font-bold text-primary font-mono">17:00</span>
                 <span class="text-[10px] text-on-surface-variant font-mono">18:30</span>
@@ -666,7 +777,7 @@
               </div>
               <!-- Wtorek 17:00 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-primary">17:00–18:30</span>
@@ -676,7 +787,7 @@
               </div>
               <!-- Środa 17:00 Joga Nidra -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-purple-50 border border-purple-200 shadow-2xs hover:bg-purple-100/70 transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50 border border-purple-200 shadow-2xs hover:bg-purple-100/70 transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-purple-800">17:00–18:00</span>
@@ -686,7 +797,7 @@
               </div>
               <!-- Czwartek 17:00 Hatha Joga -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-primary">17:00–18:30</span>
@@ -696,7 +807,7 @@
               </div>
               <!-- Piątek 16:45 Joga Nidra -->
               <div class="p-2 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-purple-50 border border-purple-200 shadow-2xs hover:bg-purple-100/70 transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50 border border-purple-200 shadow-2xs hover:bg-purple-100/70 transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-purple-800">16:45–17:45</span>
@@ -707,7 +818,7 @@
             </div>
 
             <!-- Rząd 5: Wczesny wieczór 18:00 – 19:45 (Rafał Kozioł w Śr & Pt) -->
-            <div class="grid grid-cols-6 items-stretch min-h-[82px]">
+            <div class="sched-row grid grid-cols-6 items-stretch min-h-[82px]">
               <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
                 <span class="text-xs font-bold text-[#93481e] font-mono">18:00</span>
                 <span class="text-[10px] text-on-surface-variant font-mono">19:45</span>
@@ -721,7 +832,7 @@
               </div>
               <!-- Środa 18:15 Rafał Kozioł -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] shadow-2xs hover:bg-[#ffeedd] transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] shadow-2xs hover:bg-[#ffeedd] transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-[#93481e] font-semibold">JOGA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-[#93481e]">18:15–19:45</span>
@@ -734,7 +845,7 @@
               </div>
               <!-- Piątek 18:00 Rafał Kozioł -->
               <div class="p-2 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] shadow-2xs hover:bg-[#ffeedd] transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] shadow-2xs hover:bg-[#ffeedd] transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-[#93481e] font-semibold">JOGA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-[#93481e]">18:00–19:30</span>
@@ -745,7 +856,7 @@
             </div>
 
             <!-- Rząd 6: Wieczór 19:00 – 20:30 (Hatha Joga & Misy) -->
-            <div class="grid grid-cols-6 items-stretch min-h-[82px] bg-surface-container-lowest/40">
+            <div class="sched-row grid grid-cols-6 items-stretch min-h-[82px] bg-surface-container-lowest/40">
               <div class="p-3.5 flex flex-col justify-center items-center text-center bg-surface-container-low border-r border-outline-variant/20">
                 <span class="text-xs font-bold text-primary font-mono">19:00</span>
                 <span class="text-[10px] text-on-surface-variant font-mono">20:30</span>
@@ -753,7 +864,7 @@
               </div>
               <!-- Poniedziałek 19:00 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-primary">19:00–20:30</span>
@@ -763,7 +874,7 @@
               </div>
               <!-- Wtorek 19:00 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/25 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
                     <span class="text-[9.5px] font-mono font-bold text-primary">19:00–20:30</span>
@@ -777,7 +888,7 @@
               </div>
               <!-- Czwartek 19:30 Misy Kryształowe -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
-                <div class="w-full h-full p-2.5 rounded-xl bg-amber-50 border border-amber-200 shadow-2xs hover:bg-amber-100/70 transition-colors flex flex-col justify-center">
+                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-amber-50 border border-amber-200 shadow-2xs hover:bg-amber-100/70 transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
                     <h4 class="font-headline-sm text-xs font-serif text-amber-900 font-semibold leading-tight">MISY KRYSZTAŁOWE</h4>
                     <span class="text-[9.5px] font-mono font-bold text-amber-800">19:30–20:30</span>
@@ -801,7 +912,7 @@
         <div class="md:hidden space-y-4">
           
           <!-- Poniedziałek -->
-          <div class="rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs">
+          <div id="sched-mobile-day-1" class="sched-mobile-card rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs transition-all">
             <div class="bg-primary text-white py-2.5 px-4 flex items-center justify-between">
               <span class="font-label-md text-xs uppercase tracking-wider font-semibold">Poniedziałek</span>
               <span class="text-[11px] text-[#abefe8]">1 sesja wieczorna</span>
@@ -819,7 +930,7 @@
           </div>
 
           <!-- Wtorek -->
-          <div class="rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs">
+          <div id="sched-mobile-day-2" class="sched-mobile-card rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs transition-all">
             <div class="bg-primary text-white py-2.5 px-4 flex items-center justify-between">
               <span class="font-label-md text-xs uppercase tracking-wider font-semibold">Wtorek</span>
               <span class="text-[11px] text-[#abefe8]">2 sesje</span>
@@ -845,7 +956,7 @@
           </div>
 
           <!-- Środa -->
-          <div class="rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs">
+          <div id="sched-mobile-day-3" class="sched-mobile-card rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs transition-all">
             <div class="bg-primary text-white py-2.5 px-4 flex items-center justify-between">
               <span class="font-label-md text-xs uppercase tracking-wider font-semibold">Środa</span>
               <span class="text-[11px] text-[#abefe8]">4 sesje</span>
@@ -887,7 +998,7 @@
           </div>
 
           <!-- Czwartek -->
-          <div class="rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs">
+          <div id="sched-mobile-day-4" class="sched-mobile-card rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs transition-all">
             <div class="bg-primary text-white py-2.5 px-4 flex items-center justify-between">
               <span class="font-label-md text-xs uppercase tracking-wider font-semibold">Czwartek</span>
               <span class="text-[11px] text-[#abefe8]">4 sesje</span>
@@ -931,7 +1042,7 @@
           </div>
 
           <!-- Piątek -->
-          <div class="rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs">
+          <div id="sched-mobile-day-5" class="sched-mobile-card rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs transition-all">
             <div class="bg-primary text-white py-2.5 px-4 flex items-center justify-between">
               <span class="font-label-md text-xs uppercase tracking-wider font-semibold">Piątek</span>
               <span class="text-[11px] text-[#abefe8]">2 sesje popołudniowe</span>
@@ -1597,6 +1708,180 @@
           hamburgerIcon.textContent = 'menu';
         });
       });
+    }
+  </script>
+
+  <!-- Skrypt: Dynamiczny wskaźnik pozycji w tygodniu (Gdzie jesteśmy w tygodniu) -->
+  <script>
+    const dayData = {
+      1: {
+        name: "Poniedziałek",
+        short: "Pn",
+        summary: "19:00 Hatha Joga (Kaja)",
+        fullText: "Dzisiaj w studio: <strong>19:00 – 20:30 Hatha Joga z Kają</strong>. Idealny początek tygodnia na macie!"
+      },
+      2: {
+        name: "Wtorek",
+        short: "Wt",
+        summary: "17:00 & 19:00 Hatha Joga (Kaja)",
+        fullText: "Dzisiaj w studio dwie sesje popołudniowe: <strong>17:00 – 18:30</strong> oraz <strong>19:00 – 20:30 Hatha Joga z Kają</strong>."
+      },
+      3: {
+        name: "Środa",
+        short: "Śr",
+        summary: "08:30, 10:30 Hatha • 17:00 Nidra • 18:15 Rafał Kozioł",
+        fullText: "Dzisiaj w studio 4 zróżnicowane sesje: <strong>08:30 & 10:30 Hatha Joga</strong>, <strong>17:00 Joga Nidra (Gabrysia)</strong> oraz <strong>18:15 Joga (Rafał Kozioł)</strong>."
+      },
+      4: {
+        name: "Czwartek",
+        short: "Czw",
+        summary: "06:30 Poranek • 08:30 & 17:00 Hatha • 19:30 Misy Kryształowe",
+        fullText: "Dzisiaj w studio: <strong>06:30 Poranna sesja</strong>, <strong>08:30 & 17:00 Hatha Joga</strong> oraz wieczorne <strong>19:30 Misy Kryształowe (Melody of Shanti)</strong>."
+      },
+      5: {
+        name: "Piątek",
+        short: "Pt",
+        summary: "16:45 Joga Nidra • 18:00 Rafał Kozioł",
+        fullText: "Dzisiaj w studio regeneracyjne popołudnie: <strong>16:45 Joga Nidra (Gabrysia)</strong> oraz <strong>18:00 Joga (Rafał Kozioł)</strong>."
+      }
+    };
+
+    let isUserSimulated = false;
+
+    function updateWeekIndicator(targetDay, isSimulated = false) {
+      const now = new Date();
+      const realDayOfWeek = now.getDay(); // 0 = Niedziela, 1 = Pon, ..., 5 = Piątek, 6 = Sobota
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+
+      const isRealWeekday = (realDayOfWeek >= 1 && realDayOfWeek <= 5);
+      let day = targetDay !== undefined ? targetDay : (isRealWeekday ? realDayOfWeek : 1);
+      const isWeekend = !isRealWeekday && !isSimulated;
+
+      // Obliczanie procentu na linii postępu tygodnia
+      let percent;
+      if (isWeekend) {
+        percent = realDayOfWeek === 6 ? 96 : 4; // Sobota na finiszu, Niedziela na progu nowego tygodnia
+      } else {
+        const dayIdx = day - 1; // 0 do 4
+        // Płynna interpolacja wg godziny w ciągu dnia (między 6:00 a 21:00)
+        let dayFraction = isSimulated ? 0.5 : Math.min(Math.max((hours + minutes / 60 - 6) / 15, 0.1), 0.9);
+        percent = ((dayIdx + dayFraction) / 5) * 100;
+        percent = Math.min(Math.max(percent, 5), 95);
+      }
+
+      // Aktualizacja paska linii tygodnia i markera
+      const fillEl = document.getElementById('week-timeline-fill');
+      const pinEl = document.getElementById('week-marker-pin');
+      if (fillEl) fillEl.style.width = percent + '%';
+      if (pinEl) pinEl.style.left = percent + '%';
+
+      // Teksty i statusy
+      const badgeTextEl = document.getElementById('week-live-badge-text');
+      const descEl = document.getElementById('week-live-desc');
+      const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+
+      if (isWeekend) {
+        const weekendName = realDayOfWeek === 0 ? "Niedziela" : "Sobota";
+        if (badgeTextEl) badgeTextEl.textContent = `Dziś: ${weekendName} (Weekend)`;
+        if (descEl) {
+          descEl.innerHTML = `Weekendowy odpoczynek i regeneracja. Najbliższe zajęcia w <strong>Poniedziałek o 19:00</strong>. Kliknij dzień powyżej, aby podejrzeć grafik.`;
+        }
+      } else {
+        const info = dayData[day];
+        if (badgeTextEl) {
+          badgeTextEl.textContent = isSimulated ? `Podgląd: ${info.name}` : `Dziś: ${info.name}, ${timeStr}`;
+        }
+        if (descEl) {
+          descEl.innerHTML = isSimulated 
+            ? `Podgląd grafiku: <strong class="text-primary">${info.name}</strong> • ${info.fullText}`
+            : `Jesteśmy w tygodniu: <strong class="text-primary">${info.name}</strong> • ${info.fullText}`;
+        }
+      }
+
+      // Podświetlenie przycisków Pn - Pt
+      document.querySelectorAll('.day-tab-btn').forEach(btn => {
+        const bDay = parseInt(btn.getAttribute('data-day-btn'));
+        if (bDay === day && (!isWeekend || isSimulated)) {
+          btn.classList.add('day-tab-active');
+          btn.classList.remove('text-on-surface-variant');
+        } else {
+          btn.classList.remove('day-tab-active');
+          btn.classList.add('text-on-surface-variant');
+        }
+      });
+
+      // Podświetlenie nagłówków kolumn w tabeli Desktop
+      for (let d = 1; d <= 5; d++) {
+        const thEl = document.getElementById('sched-th-' + d);
+        if (thEl) {
+          if (d === day && (!isWeekend || isSimulated)) {
+            thEl.classList.add('sched-col-active-head');
+            thEl.innerHTML = `<span>${dayData[d].name}</span> <span class="today-pill ml-1.5 px-1.5 py-0.2 rounded-full bg-[#e0b084] text-[#004541] text-[9px] font-extrabold uppercase shadow-2xs animate-pulse">Dziś</span>`;
+          } else {
+            thEl.classList.remove('sched-col-active-head');
+            thEl.innerHTML = `<span>${dayData[d].name}</span>`;
+          }
+        }
+      }
+
+      // Podświetlenie pionowe komórek w tabeli Desktop
+      document.querySelectorAll('.sched-row').forEach(row => {
+        const cells = row.children;
+        for (let d = 1; d <= 5; d++) {
+          const cell = cells[d];
+          if (cell) {
+            if (d === day && (!isWeekend || isSimulated)) {
+              cell.classList.add('sched-cell-active');
+            } else {
+              cell.classList.remove('sched-cell-active');
+            }
+          }
+        }
+      });
+
+      // Podświetlenie kart mobilnych
+      for (let d = 1; d <= 5; d++) {
+        const cardEl = document.getElementById('sched-mobile-day-' + d);
+        if (cardEl) {
+          const existingBadge = cardEl.querySelector('.mobile-today-badge');
+          if (d === day && (!isWeekend || isSimulated)) {
+            cardEl.classList.add('sched-mobile-active');
+            if (!existingBadge) {
+              const headerContainer = cardEl.querySelector('.bg-primary');
+              if (headerContainer) {
+                const rightSpan = headerContainer.querySelector('span:last-child');
+                const badge = document.createElement('span');
+                badge.className = 'mobile-today-badge px-2 py-0.5 rounded-full bg-[#e0b084] text-[#004541] text-[10px] font-extrabold uppercase tracking-wide mr-2 shadow-2xs';
+                badge.textContent = '● DZIŚ';
+                headerContainer.insertBefore(badge, rightSpan);
+              }
+            }
+          } else {
+            cardEl.classList.remove('sched-mobile-active');
+            if (existingBadge) existingBadge.remove();
+          }
+        }
+      }
+    }
+
+    function selectDay(d) {
+      isUserSimulated = true;
+      updateWeekIndicator(d, true);
+    }
+
+    function selectLiveDay() {
+      isUserSimulated = false;
+      const realDay = new Date().getDay();
+      const target = (realDay >= 1 && realDay <= 5) ? realDay : 1;
+      updateWeekIndicator(target, false);
+    }
+
+    // Inicjalizacja przy załadowaniu DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', selectLiveDay);
+    } else {
+      selectLiveDay();
     }
   </script>
 
