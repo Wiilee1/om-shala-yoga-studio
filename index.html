@@ -589,11 +589,11 @@
             <div class="py-3.5 px-3 border-r border-white/10 text-[#abefe8] flex items-center justify-center gap-1.5 select-none">
               <span class="material-symbols-outlined text-[15px]">schedule</span> Godzina
             </div>
-            <div id="sched-th-1" onclick="selectScheduleDay(1)" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center cursor-pointer select-none hover:bg-[#003632]">Poniedziałek</div>
-            <div id="sched-th-2" onclick="selectScheduleDay(2)" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center cursor-pointer select-none hover:bg-[#003632]">Wtorek</div>
-            <div id="sched-th-3" onclick="selectScheduleDay(3)" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center cursor-pointer select-none hover:bg-[#003632]">Środa</div>
-            <div id="sched-th-4" onclick="selectScheduleDay(4)" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center cursor-pointer select-none hover:bg-[#003632]">Czwartek</div>
-            <div id="sched-th-5" onclick="selectScheduleDay(5)" class="sched-col-head py-3.5 px-3 transition-all relative flex items-center justify-center cursor-pointer select-none hover:bg-[#003632]">Piątek</div>
+            <div id="sched-th-1" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Poniedziałek</div>
+            <div id="sched-th-2" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Wtorek</div>
+            <div id="sched-th-3" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Środa</div>
+            <div id="sched-th-4" class="sched-col-head py-3.5 px-3 border-r border-white/10 transition-all relative flex items-center justify-center select-none">Czwartek</div>
+            <div id="sched-th-5" class="sched-col-head py-3.5 px-3 transition-all relative flex items-center justify-center select-none">Piątek</div>
           </div>
 
           <div id="sched-grid-body" class="relative divide-y divide-outline-variant/20 bg-surface">
@@ -1722,8 +1722,6 @@
       6: "Sobota"
     };
 
-    let selectedDayManual = null; // null = automatycznie wg aktualnego czasu
-
     function calculateScheduleTop(timeMinutes) {
       const r1 = document.getElementById('sched-row-1');
       const r2 = document.getElementById('sched-row-2');
@@ -1795,40 +1793,66 @@
     function renderScheduleLine() {
       const now = new Date();
       const realDay = now.getDay(); // 0 = Nd, 1 = Pn, 2 = Wt, 3 = Śr, 4 = Czw, 5 = Pt, 6 = Sb
-      const isRealWeekday = (realDay >= 1 && realDay <= 5);
+      const isWeekday = (realDay >= 1 && realDay <= 5);
 
-      // Aktywny dzień: jeśli ręcznie wybrany lub dzień roboczy, w przeciwnym razie Poniedziałek
-      let activeDay = selectedDayManual !== null ? selectedDayManual : (isRealWeekday ? realDay : 1);
-      const isSimulated = (selectedDayManual !== null || !isRealWeekday);
+      const lineEl = document.getElementById('sched-live-line');
 
+      // W weekend (Sobota i Niedziela): linii po prostu nie ma
+      if (!isWeekday) {
+        if (lineEl) {
+          lineEl.style.display = 'none';
+        }
+        // Brak aktywnego dnia w nagłówkach kolumn
+        for (let d = 1; d <= 5; d++) {
+          const th = document.getElementById('sched-th-' + d);
+          if (th) {
+            th.classList.remove('sched-col-active-head');
+            th.innerHTML = `<span>${dayNames[d]}</span>`;
+          }
+        }
+        // Brak aktywnej kolumny w rzędach
+        document.querySelectorAll('.sched-row').forEach(row => {
+          const cells = row.children;
+          for (let d = 1; d <= 5; d++) {
+            const cell = cells[d];
+            if (cell) cell.classList.remove('sched-cell-active');
+          }
+        });
+        // Brak aktywnej karty mobilnej
+        for (let d = 1; d <= 5; d++) {
+          const card = document.getElementById('sched-mobile-day-' + d);
+          if (card) {
+            card.classList.remove('sched-mobile-active');
+            const ind = card.querySelector('.mobile-live-time-line');
+            if (ind) ind.remove();
+          }
+        }
+        return;
+      }
+
+      // Dni robocze (Poniedziałek – Piątek): w 100% automatyczne wyznaczanie pozycji
       const hours = now.getHours();
       const minutes = now.getMinutes();
       const timeMinutes = hours * 60 + minutes;
-      const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 
       // Oblicz pozycję pionową w pikselach
       const topY = calculateScheduleTop(timeMinutes);
 
       // Element linii na widoku Desktop
-      const lineEl = document.getElementById('sched-live-line');
-
       if (lineEl) {
         lineEl.style.display = 'block';
         lineEl.style.top = `${topY - 1}px`;
-        lineEl.style.left = `${activeDay * 16.666667}%`;
+        lineEl.style.left = `${realDay * 16.666667}%`;
         lineEl.style.width = '16.666667%';
       }
 
-      // Podświetlenie nagłówków kolumn dni tygodnia
+      // Podświetlenie nagłówka wyłącznie dla dzisiejszego dnia
       for (let d = 1; d <= 5; d++) {
         const th = document.getElementById('sched-th-' + d);
         if (th) {
-          if (d === activeDay) {
+          if (d === realDay) {
             th.classList.add('sched-col-active-head');
-            const badgeHtml = (isRealWeekday && d === realDay && selectedDayManual === null)
-              ? `<span class="ml-1.5 px-1.5 py-0.2 rounded-full bg-[#e0b084] text-[#004541] text-[9px] font-extrabold uppercase shadow-2xs animate-pulse">Dziś</span>`
-              : `<span class="ml-1.5 px-1.5 py-0.2 rounded-full bg-white/20 text-[#abefe8] text-[9px] font-semibold uppercase">Wybrany</span>`;
-            th.innerHTML = `<span>${dayNames[d]}</span> ${badgeHtml}`;
+            th.innerHTML = `<span>${dayNames[d]}</span> <span class="ml-1.5 px-1.5 py-0.2 rounded-full bg-[#e0b084] text-[#004541] text-[9px] font-extrabold uppercase shadow-2xs animate-pulse">Dziś</span>`;
           } else {
             th.classList.remove('sched-col-active-head');
             th.innerHTML = `<span>${dayNames[d]}</span>`;
@@ -1836,13 +1860,13 @@
         }
       }
 
-      // Delikatne podświetlenie tła aktywnej kolumny w rzędach
+      // Delikatne podświetlenie tła dzisiejszej kolumny w rzędach
       document.querySelectorAll('.sched-row').forEach(row => {
         const cells = row.children;
         for (let d = 1; d <= 5; d++) {
           const cell = cells[d];
           if (cell) {
-            if (d === activeDay) {
+            if (d === realDay) {
               cell.classList.add('sched-cell-active');
             } else {
               cell.classList.remove('sched-cell-active');
@@ -1851,12 +1875,12 @@
         }
       });
 
-      // Podświetlenie i wskaźnik czasu na kartach mobilnych
+      // Podświetlenie i wskaźnik czasu na mobilnej karcie dzisiejszego dnia
       for (let d = 1; d <= 5; d++) {
         const card = document.getElementById('sched-mobile-day-' + d);
         if (card) {
           let ind = card.querySelector('.mobile-live-time-line');
-          if (d === activeDay) {
+          if (d === realDay) {
             card.classList.add('sched-mobile-active');
             if (!ind) {
               ind = document.createElement('div');
@@ -1869,11 +1893,6 @@
           }
         }
       }
-    }
-
-    function selectScheduleDay(d) {
-      selectedDayManual = (selectedDayManual === d) ? null : d;
-      renderScheduleLine();
     }
 
     window.addEventListener('resize', renderScheduleLine);
