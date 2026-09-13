@@ -573,7 +573,7 @@
               <span class="w-2 h-2 rounded-full bg-amber-600"></span> Misy Kryształowe
             </span>
             <span class="px-3 py-1 rounded-full bg-red-50 text-red-700 font-medium shadow-xs flex items-center gap-1.5 border border-red-200/70">
-              <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Czerwona linia: aktualny czas
+              <span class="w-3 h-[2.5px] bg-red-500 rounded-full"></span> Czerwona linia: aktualny czas
             </span>
           </div>
         </div>
@@ -598,20 +598,9 @@
 
           <div id="sched-grid-body" class="relative divide-y divide-outline-variant/20 bg-surface">
 
-            <!-- Dynamiczny Wskaźnik Czasu: Czerwona linia w harmonogramie -->
-            <div id="sched-live-guide" class="absolute left-0 w-full border-t border-dashed border-red-400/30 z-20 pointer-events-none transition-all duration-300 ease-out" style="display: none; top: 0px;"></div>
-            <div id="sched-live-line" class="absolute z-30 pointer-events-none transition-all duration-300 ease-out flex items-center" style="display: none; left: 16.6667%; width: 16.6667%; top: 0px;">
-              <div class="relative w-full h-[2.5px] bg-red-500 shadow-sm flex items-center">
-                <!-- Pulsująca kropka -->
-                <div class="absolute -left-1.5 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-white shadow-xs flex items-center justify-center">
-                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
-                </div>
-                <!-- Etykieta czasu / TERAZ -->
-                <div id="sched-live-badge" class="absolute -top-3.5 left-2 px-2.5 py-0.5 rounded-full bg-red-600 text-white text-[9.5px] font-bold font-mono tracking-wider shadow-md uppercase whitespace-nowrap flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                  <span id="sched-live-time-text">TERAZ 13:00</span>
-                </div>
-              </div>
+            <!-- Dynamiczny Wskaźnik Czasu: Czysta czerwona linia w harmonogramie -->
+            <div id="sched-live-line" class="absolute z-30 pointer-events-none transition-all duration-300 ease-out" style="display: none; left: 16.6667%; width: 16.6667%; top: 0px;">
+              <div class="w-full h-[2.5px] bg-red-500 shadow-xs rounded-full"></div>
             </div>
 
             <!-- Rząd 1: Poranek wczesny 06:30 – 07:30 -->
@@ -633,8 +622,8 @@
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
                 <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <span class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</span>
-                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-primary/10 text-primary uppercase font-bold tracking-wider">Poranek</span>
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                    <span class="text-[9.5px] font-mono font-bold text-primary">06:30–07:30</span>
                   </div>
                   <span class="text-[11px] text-on-surface-variant">Poranna sesja</span>
                 </div>
@@ -659,14 +648,20 @@
               <!-- Środa 08:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
                 <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
-                  <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                  <div class="flex items-center justify-between gap-1 mb-0.5">
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                    <span class="text-[9.5px] font-mono font-bold text-primary">08:30–10:00</span>
+                  </div>
                   <span class="text-[11px] text-on-surface-variant mt-0.5">Sesja poranna</span>
                 </div>
               </div>
               <!-- Czwartek 08:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
                 <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
-                  <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                  <div class="flex items-center justify-between gap-1 mb-0.5">
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                    <span class="text-[9.5px] font-mono font-bold text-primary">08:30–10:00</span>
+                  </div>
                   <span class="text-[11px] text-on-surface-variant mt-0.5">Sesja poranna</span>
                 </div>
               </div>
@@ -690,7 +685,10 @@
               <!-- Środa 10:30 -->
               <div class="p-2 border-r border-outline-variant/20 flex items-center">
                 <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-surface-container-low border border-primary/20 shadow-2xs hover:bg-surface-container transition-colors flex flex-col justify-center">
-                  <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                  <div class="flex items-center justify-between gap-1 mb-0.5">
+                    <h4 class="font-headline-sm text-xs font-serif text-primary font-semibold">HATHA JOGA</h4>
+                    <span class="text-[9.5px] font-mono font-bold text-primary">10:30–12:00</span>
+                  </div>
                   <span class="text-[11px] text-on-surface-variant mt-0.5">Kaja Wiśniewska</span>
                 </div>
               </div>
@@ -1758,39 +1756,14 @@
       // Oblicz pozycję pionową w pikselach
       const topY = calculateScheduleTop(timeMinutes);
 
-      // Elementy linii na widoku Desktop
-      const guideEl = document.getElementById('sched-live-guide');
+      // Element linii na widoku Desktop
       const lineEl = document.getElementById('sched-live-line');
-      const badgeEl = document.getElementById('sched-live-badge');
-      const timeTextEl = document.getElementById('sched-live-time-text');
 
-      if (guideEl && lineEl) {
-        guideEl.style.display = 'block';
-        guideEl.style.top = `${topY}px`;
-
-        lineEl.style.display = 'flex';
+      if (lineEl) {
+        lineEl.style.display = 'block';
         lineEl.style.top = `${topY - 1}px`;
         lineEl.style.left = `${activeDay * 16.666667}%`;
         lineEl.style.width = '16.666667%';
-
-        if (timeTextEl) {
-          if (isSimulated && !isRealWeekday && selectedDayManual === null) {
-            timeTextEl.textContent = `${timeStr} (Weekend)`;
-          } else {
-            timeTextEl.textContent = `TERAZ ${timeStr}`;
-          }
-        }
-
-        // Dostosowanie pozycji dymka na piątku, by nie wychodził poza krawędź tabeli
-        if (badgeEl) {
-          if (activeDay === 5) {
-            badgeEl.style.left = 'auto';
-            badgeEl.style.right = '6px';
-          } else {
-            badgeEl.style.left = '6px';
-            badgeEl.style.right = 'auto';
-          }
-        }
       }
 
       // Podświetlenie nagłówków kolumn dni tygodnia
@@ -1834,19 +1807,8 @@
             card.classList.add('sched-mobile-active');
             if (!ind) {
               ind = document.createElement('div');
-              ind.className = 'mobile-live-time-line flex items-center gap-2 px-3 py-1.5 mx-3 mb-2 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold shadow-2xs';
-              ind.innerHTML = `
-                <span class="relative flex h-2.5 w-2.5 shrink-0">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
-                </span>
-                <span class="font-mono text-xs font-bold text-red-600">${timeStr}</span>
-                <span class="text-[11px] text-red-800 font-medium">${isRealWeekday && d === realDay ? 'Aktualny czas' : 'Podgląd'}</span>
-              `;
+              ind.className = 'mobile-live-time-line mx-3 my-2 h-[2.5px] bg-red-500 rounded-full shadow-2xs';
               card.insertBefore(ind, card.children[1]);
-            } else {
-              const timeSpan = ind.querySelector('.font-mono');
-              if (timeSpan) timeSpan.textContent = timeStr;
             }
           } else {
             card.classList.remove('sched-mobile-active');
