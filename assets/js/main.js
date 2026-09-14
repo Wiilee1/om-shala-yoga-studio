@@ -158,15 +158,6 @@ const SCHEDULE_DATA = {
     dayName: 'Piątek',
     classes: [
       {
-        time: '16:45 - 17:45',
-        duration: '60 min',
-        title: 'Joga Nidra',
-        category: 'nidra',
-        instructor: 'Gabrysia',
-        tag: 'Regeneracja układu nerwowego',
-        desc: 'Idealne zamknięcie tygodnia. Zanurz się w błogim stanie spokoju i odnowy.'
-      },
-      {
         time: '18:00 - 19:30',
         duration: '90 min',
         title: 'Joga & Relaks',
@@ -334,8 +325,8 @@ function initLiveStudioStatus() {
     isOpen = (currentTime >= 8 * 60 && currentTime < 19 * 60);
     todayText = 'Dzisiaj otwarte 08:00 – 19:00';
   } else if (day === 5) { // Piątek
-    isOpen = (currentTime >= 16 * 60 && currentTime < 20 * 60);
-    todayText = 'Dzisiaj zajęcia 16:45 – 19:30';
+    isOpen = (currentTime >= 17 * 60 + 30 && currentTime < 20 * 60);
+    todayText = 'Dzisiaj zajęcia 18:00 – 19:30';
   } else { // Sobota, Niedziela
     isOpen = false;
     todayText = 'Weekend — warsztaty & plener wg zapisów';

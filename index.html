@@ -57,10 +57,10 @@
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 51.0505,
-          "longitude": 16.1925
+          "latitude": 51.0485573,
+          "longitude": 16.1919217
         },
-        "hasMap": "https://maps.google.com/maps?q=Chopina+13,+Jawor,+Poland",
+        "hasMap": "https://www.google.com/maps/place/Om+Shala+Joga/@51.0485573,16.1919217,577m/data=!3m1!1e3!4m15!1m8!3m7!1s0x470f05e597f1e751:0x343d0238c1441340!2sChopina+13,+59-400+Jawor!3b1!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11ghfv1j47!3m5!1s0x470f0558048240eb:0xa5ea96ba9be416da!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11zxmpdhv2",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -279,7 +279,7 @@
       
       <!-- Lewa strona: Logo Om Shala Studio Jogi -->
       <a href="#" class="flex items-center gap-2.5 group shrink-0">
-        <img src="assets/images/om-shala-mandala-perfect.webp" alt="Om Shala Joga Logo" class="h-8 w-8 object-contain group-hover:rotate-45 transition-transform duration-500"/>
+        <img src="assets/images/om-shala-mandala-perfect.png" alt="Om Shala Joga Logo" class="h-8 w-8 object-contain group-hover:rotate-45 transition-transform duration-500"/>
         <div class="flex flex-col">
           <span class="font-serif text-base tracking-[0.14em] text-[#004541] font-normal uppercase leading-tight">Om Shala</span>
           <span class="text-[8.5px] tracking-[0.22em] text-[#7e5713] uppercase font-sans">Studio Jogi • Jawor</span>
@@ -357,13 +357,13 @@
           muted 
           playsinline 
           preload="metadata"
-          poster="assets/images/hero-video-poster.webp" 
+          poster="assets/images/hero-video-poster.jpg" 
           class="w-full h-full object-cover object-center scale-[1.02] transform-gpu"
         >
           <source src="assets/videos/hero-leaves-loop.webm" type="video/webm">
           <source src="assets/videos/hero-leaves-loop.mp4" type="video/mp4">
           <!-- Fallback na wypadek przeglądarek bez video -->
-          <img src="assets/images/hero-video-poster.webp" alt="Cienie liści na ścianie studia jogi" class="w-full h-full object-cover object-center"/>
+          <img src="assets/images/hero-video-poster.jpg" alt="Cienie liści na ścianie studia jogi" class="w-full h-full object-cover object-center"/>
         </video>
         <!-- Delikatna mgiełka/filtr dla zachowania idealnego kontrastu mandali i typografii -->
         <div class="absolute inset-0 bg-[#f4f3ee]/40 sm:bg-[#f4f3ee]/35 backdrop-blur-[0.5px]"></div>
@@ -374,7 +374,7 @@
         
         <!-- Centralna, wyrazista mandala z Twojego pliku bez tła -->
         <div class="w-32 h-32 sm:w-44 sm:h-44 md:w-52 md:h-52 mb-6 sm:mb-8 transition-transform duration-700 hover:rotate-45">
-          <img src="assets/images/om-shala-mandala-perfect.webp" alt="Om Shala Mandala" class="w-full h-full object-contain drop-shadow-sm"/>
+          <img src="assets/images/om-shala-mandala-perfect.png" alt="Om Shala Mandala" class="w-full h-full object-contain drop-shadow-sm"/>
         </div>
 
         <!-- Wielki, elegancki tytuł szeryfowy OM SHALA -->
@@ -406,10 +406,10 @@
 
         <!-- Kapsułka z adresem i grupami (Dyskretna, dodająca autentyczności) -->
         <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[12px] text-[#273331]/75 mb-10">
-          <span class="bg-surface/80 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-outline-variant/30 flex items-center gap-1.5">
+          <a href="https://www.google.com/maps/place/Om+Shala+Joga/@51.0485573,16.1919217,577m/data=!3m1!1e3!4m15!1m8!3m7!1s0x470f05e597f1e751:0x343d0238c1441340!2sChopina+13,+59-400+Jawor!3b1!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11ghfv1j47!3m5!1s0x470f0558048240eb:0xa5ea96ba9be416da!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11zxmpdhv2" target="_blank" rel="noopener noreferrer" class="bg-surface/80 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-outline-variant/30 flex items-center gap-1.5 hover:border-primary/50 hover:bg-surface transition-all">
             <span class="material-symbols-outlined text-[14px] text-[#004541]">location_on</span>
             ul. Chopina 13/11, Jawor
-          </span>
+          </a>
           <span class="bg-surface/80 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-outline-variant/30 flex items-center gap-1.5">
             <span class="material-symbols-outlined text-[14px] text-[#7e5713]">groups</span>
             Kameralne grupy (max 6 osób)
@@ -428,112 +428,66 @@
     <!-- =======================================================================
          DLACZEGO JOGA? (5 Prawdziwych Punktów ze Studia)
          ======================================================================= -->
-    <section class="relative w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface" id="dlaczego-joga">
-      <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+    <!-- =======================================================================
+         PRAKTYKA (Minimalistyczna, przestrzenna sekcja inspirowana Codex)
+         ======================================================================= -->
+    <section class="relative w-full py-16 lg:py-24 px-4 sm:px-6 lg:px-12 bg-surface" id="dlaczego-joga" aria-labelledby="practice-title">
+      <div class="max-w-6xl mx-auto">
         
-        <div class="w-16 h-16 mb-3 transition-transform duration-500 hover:rotate-45">
-          <img alt="Mandala Om Shala" class="w-full h-full object-contain" src="assets/images/om-shala-mandala-perfect.webp" loading="lazy" decoding="async"/>
+        <!-- Nagłówek i wprowadzenie w układzie edytorialnym -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 pb-12 sm:pb-16 border-b border-outline-variant/30">
+          <div class="max-w-xl">
+            <p class="font-label-sm text-xs uppercase tracking-[0.25em] text-secondary font-semibold mb-3">Praktyka, która zaczyna się od Ciebie</p>
+            <h2 id="practice-title" class="font-serif text-[32px] sm:text-[42px] lg:text-[48px] text-primary leading-[1.18] tracking-tight">
+              Małe kroki.<br><em class="italic font-normal text-secondary">Więcej przestrzeni.</em>
+            </h2>
+          </div>
+          <div class="max-w-md">
+            <p class="font-body-sm text-sm sm:text-base text-on-surface-variant leading-relaxed">
+              Joga w Om Shala to czas na poznawanie siebie. Przez ruch, oddech i uważność — bez porównywania i pośpiechu, we własnym naturalnym rytmie.
+            </p>
+          </div>
         </div>
-        
-        <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-2">Filozofia Studia</span>
-        <h2 class="font-headline-lg text-[28px] sm:text-[36px] lg:text-[40px] text-primary tracking-wide uppercase font-serif mb-3">
-          Dlaczego Joga?
-        </h2>
-        <div class="w-16 h-0.5 bg-secondary-container rounded-full mb-10"></div>
 
-        <!-- 5 Prawdziwych Punktów Studia OM SHALA -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full text-left">
+        <!-- Trzy filary praktyki (Siatka 3-kolumnowa) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant/30 pt-2">
           
-          <!-- Punkt 1 -->
-          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+          <!-- 01 Poczuj ciało -->
+          <article class="py-8 md:py-10 md:pr-10 lg:pr-12 flex flex-col justify-between">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
-                <span class="material-symbols-outlined text-[22px]">explore</span>
-              </div>
-              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... pozwala Ci wejść w głąb siebie</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Zatrzymaj codzienny pęd. Daj sobie bezpieczną przestrzeń na wsłuchanie się we własne potrzeby i emocje.
+              <span class="font-serif text-lg text-secondary/70 block mb-6 sm:mb-10">01</span>
+              <h3 class="font-serif text-2xl sm:text-[28px] text-primary mb-3 tracking-tight">Poczuj ciało.</h3>
+              <p class="font-body-sm text-sm text-on-surface-variant leading-relaxed mb-8">
+                Odkrywaj ruch z uważnością. Szukaj swobody, poznawaj swoje możliwości i daj sobie czas na bezpieczną, zrównoważoną praktykę asan.
               </p>
             </div>
-            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
-              <span>Wewnętrzny spokój</span>
-            </div>
-          </div>
+            <span class="font-label-sm text-[11px] tracking-[0.2em] font-semibold text-secondary uppercase">RUCH &amp; MOBILNOŚĆ</span>
+          </article>
 
-          <!-- Punkt 2 -->
-          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+          <!-- 02 Złap oddech -->
+          <article class="py-8 md:py-10 md:px-10 lg:px-12 flex flex-col justify-between">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
-                <span class="material-symbols-outlined text-[22px]">balance</span>
-              </div>
-              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... harmonizuje ciało i umysł</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Ruch zsynchronizowany z oddechem przywraca naturalną równowagę psychofizyczną i usuwa napięcia.
+              <span class="font-serif text-lg text-secondary/70 block mb-6 sm:mb-10">02</span>
+              <h3 class="font-serif text-2xl sm:text-[28px] text-primary mb-3 tracking-tight">Złap oddech.</h3>
+              <p class="font-body-sm text-sm text-on-surface-variant leading-relaxed mb-8">
+                Zatrzymaj się przy tym, co najprostsze. Zauważ swój oddech, zharmonizuj ciało z umysłem i pozwól sobie na chwilę głębokiego wyciszenia.
               </p>
             </div>
-            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
-              <span>Harmonia</span>
-            </div>
-          </div>
+            <span class="font-label-sm text-[11px] tracking-[0.2em] font-semibold text-secondary uppercase">ODDECH &amp; SPOKÓJ</span>
+          </article>
 
-          <!-- Punkt 3 -->
-          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+          <!-- 03 Bądź tutaj -->
+          <article class="py-8 md:py-10 md:pl-10 lg:pl-12 flex flex-col justify-between">
             <div>
-              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
-                <span class="material-symbols-outlined text-[22px]">spa</span>
-              </div>
-              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... wycisza i relaksuje</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Pranajama i techniki relaksacyjne obniżają poziom kortyzolu, kojąc układ nerwowy po całym dniu.
+              <span class="font-serif text-lg text-secondary/70 block mb-6 sm:mb-10">03</span>
+              <h3 class="font-serif text-2xl sm:text-[28px] text-primary mb-3 tracking-tight">Bądź tutaj.</h3>
+              <p class="font-body-sm text-sm text-on-surface-variant leading-relaxed mb-8">
+                Odłóż na moment listę spraw. Skieruj uwagę do środka, uwolnij napięcia i sprawdź, czego dziś naprawdę potrzebuje Twój organizm.
               </p>
             </div>
-            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
-              <span>Wyciszenie</span>
-            </div>
-          </div>
+            <span class="font-label-sm text-[11px] tracking-[0.2em] font-semibold text-secondary uppercase">UWAŻNOŚĆ &amp; OBECNOŚĆ</span>
+          </article>
 
-          <!-- Punkt 4 -->
-          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
-                <span class="material-symbols-outlined text-[22px]">psychology</span>
-              </div>
-              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... uczy Cię poznawać siebie</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Uważna obserwacja ciała na macie pozwala z empatią odkryć swoje granice i krok po kroku je rozszerzać.
-              </p>
-            </div>
-            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
-              <span>Samoświadomość</span>
-            </div>
-          </div>
-
-          <!-- Punkt 5 (Span na 2 kolumny na desktopie) -->
-          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between md:col-span-2 lg:col-span-2">
-            <div>
-              <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-4">
-                <span class="material-symbols-outlined text-[22px]">fitness_center</span>
-              </div>
-              <h3 class="font-headline-sm text-[18px] text-primary font-serif mb-2">... z wyczuciem uelastycznia i mobilizuje ciało</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Bezpieczna, anatomiczna praca z asanami przywraca ruchomość stawom, wzmacnia mięśnie głębokie kręgosłupa i poprawia ogólną sprawność bez przeciążania organizmu.
-              </p>
-            </div>
-            <div class="mt-4 pt-3 flex items-center gap-1.5 font-label-sm text-secondary uppercase tracking-wider">
-              <span>Witalność & Mobilność</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Subtelny link Zapisz się -->
-        <div class="mt-12 flex flex-col items-center">
-          <a class="group flex flex-col items-center gap-1 text-primary hover:text-primary-container transition-colors" href="https://zarezerwuj.pl/om-shala-joga" rel="noopener noreferrer" target="_blank">
-            <span class="font-headline-sm text-headline-sm uppercase tracking-[0.35em] font-serif text-primary border-b-2 border-secondary/40 pb-1 group-hover:border-primary transition-all">
-              z a p i s z &nbsp; s i ę
-            </span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Bezpośrednia rezerwacja miejsc w systemie zarezerwuj.pl</span>
-          </a>
         </div>
 
       </div>
@@ -677,7 +631,7 @@
             <!-- Rząd Przerwy Popołudniowej: Czysty, spokojny separator -->
             <div id="sched-row-break" class="sched-row grid grid-cols-6 items-center min-h-[38px] bg-surface-container-low/30 border-y border-outline-variant/15 text-xs text-on-surface-variant/60">
               <div class="p-2 text-center border-r border-outline-variant/20 font-mono text-[11px]">12:00</div>
-              <div class="col-span-5 text-center italic tracking-wider font-light">Przerwa popołudniowa (12:00 – 16:45)</div>
+              <div class="col-span-5 text-center italic tracking-wider font-light">Przerwa popołudniowa (12:00 – 17:00)</div>
             </div>
 
             <!-- Rząd 4: 17:00 -->
@@ -726,19 +680,8 @@
                   </div>
                 </div>
               </div>
-              <!-- Piątek 16:45 Joga Nidra -->
-              <div class="p-2 flex items-center">
-                <div class="sched-session-card w-full h-full p-2.5 rounded-xl bg-purple-50/70 border border-purple-200/60 hover:border-purple-300 transition-all flex flex-col justify-center">
-                  <div class="flex items-center justify-between gap-1 mb-0.5">
-                    <h4 class="font-headline-sm text-xs font-serif text-purple-900 font-semibold">Joga Nidra</h4>
-                    <span class="text-[10px] font-mono font-medium text-purple-800">16:45–17:45</span>
-                  </div>
-                  <div class="flex items-center justify-between text-[11px] mt-0.5">
-                    <span class="text-purple-700/80">Gabrysia</span>
-                    <span class="text-[10px] font-mono font-medium text-purple-800/70 shrink-0">60 min</span>
-                  </div>
-                </div>
-              </div>
+              <!-- Piątek: Brak sesji o 17:00 (zajęcia dopiero o 18:00) -->
+              <div class="p-2 flex items-center justify-center text-xs text-outline-variant/50">—</div>
             </div>
 
             <!-- Rząd 5: 18:00 -->
@@ -968,17 +911,9 @@
           <div id="sched-mobile-day-5" class="sched-mobile-card rounded-2xl bg-surface border border-outline-variant/30 overflow-hidden shadow-xs transition-all">
             <div class="bg-primary text-white py-2.5 px-4 flex items-center justify-between">
               <span class="font-label-md text-xs uppercase tracking-wider font-semibold">Piątek</span>
-              <span class="text-[11px] text-[#abefe8]">2 sesje popołudniowe</span>
+              <span class="text-[11px] text-[#abefe8]">1 sesja popołudniowa</span>
             </div>
             <div class="p-3 space-y-2.5">
-              <div class="p-3 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-between">
-                <div>
-                  <span class="text-xs font-bold text-purple-900 font-mono block">16:45 – 17:45 <span class="text-[10px] font-normal text-purple-800/70 ml-1">• 60 min</span></span>
-                  <h4 class="font-headline-sm text-sm font-serif text-purple-900 font-semibold">JOGA NIDRA</h4>
-                  <p class="text-[11px] text-purple-800">Gabrysia</p>
-                </div>
-                <span class="w-2.5 h-2.5 rounded-full bg-purple-700 shrink-0"></span>
-              </div>
               <div class="p-3 rounded-xl bg-[#fff8f3] border border-[#f0cbb5] flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-[#93481e] font-mono block">18:00 – 19:30 <span class="text-[10px] font-normal text-[#93481e]/70 ml-1">• 90 min</span></span>
@@ -1032,7 +967,7 @@
           <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div class="w-full aspect-square rounded-2xl bg-surface-container overflow-hidden mb-5 relative shadow-xs">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/kaja.webp" alt="Kaja Wiśniewska Hatha Joga" loading="lazy" decoding="async"/>
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/kaja.jpg" alt="Kaja Wiśniewska Hatha Joga" loading="lazy" decoding="async"/>
                 <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-sm text-on-primary text-[11px] font-semibold uppercase tracking-wider">
                   Hatha Joga
                 </div>
@@ -1053,7 +988,7 @@
           <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div class="w-full aspect-square rounded-2xl bg-purple-50 overflow-hidden mb-5 relative shadow-xs">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/gabrysia.webp" alt="Gabrysia Joga Nidra" loading="lazy" decoding="async"/>
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/gabrysia.jpg" alt="Gabrysia Joga Nidra" loading="lazy" decoding="async"/>
                 <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-purple-900/90 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider">
                   Joga Nidra
                 </div>
@@ -1066,7 +1001,7 @@
             </div>
             <div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center gap-2 text-purple-900 text-xs font-medium">
               <span class="material-symbols-outlined text-[15px]">schedule</span>
-              <span>Środy 17:00 & Piątki 16:45</span>
+              <span>Środy 17:00</span>
             </div>
           </div>
 
@@ -1074,7 +1009,7 @@
           <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div class="w-full aspect-square rounded-2xl bg-surface-container overflow-hidden mb-5 relative shadow-xs">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/rafal.webp" alt="Rafał Kozioł Instruktor Jogi" loading="lazy" decoding="async"/>
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/rafal.jpg" alt="Rafał Kozioł Instruktor Jogi" loading="lazy" decoding="async"/>
                 <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-[#93481e]/90 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider">
                   Joga
                 </div>
@@ -1095,7 +1030,7 @@
           <div class="rounded-3xl bg-surface-container-low border border-outline-variant/30 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div class="w-full aspect-square rounded-2xl bg-surface-container overflow-hidden mb-5 relative shadow-xs">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/shanti.webp" alt="Melody of Shanti Misy Kryształowe" loading="lazy" decoding="async"/>
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="assets/images/shanti.jpg" alt="Melody of Shanti Misy Kryształowe" loading="lazy" decoding="async"/>
                 <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-secondary/90 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider">
                   Misy & Dźwięk
                 </div>
@@ -1180,7 +1115,7 @@
             
             <!-- Delikatna mandala w tle karty dla klimatu -->
             <div class="absolute -right-12 -bottom-12 w-56 h-56 opacity-10 pointer-events-none transition-transform duration-700 group-hover:scale-110">
-              <img src="assets/images/om-shala-mandala-perfect.webp" alt="" class="w-full h-full object-contain filter invert brightness-200" loading="lazy" decoding="async"/>
+              <img src="assets/images/om-shala-mandala-perfect.png" alt="" class="w-full h-full object-contain filter invert brightness-200" loading="lazy" decoding="async"/>
             </div>
 
             <div class="space-y-6 relative z-10">
@@ -1291,8 +1226,8 @@
         <!-- Zwijana Harmonijka (Accordion) - czysta, nieprzeładowana, intuicyjna -->
         <div class="space-y-3.5">
           
-          <!-- Kategoria 1: Przebieg zajęć i grupy (domyślnie otwarta) -->
-          <details class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30" open>
+          <!-- Kategoria 1: Przebieg zajęć i grupy -->
+          <details name="zasady-accordion" class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
             <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none hover:bg-surface-container/60 transition-colors">
               <div class="flex items-center gap-3.5">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 group-open:bg-primary group-open:text-white transition-colors duration-300">
@@ -1327,7 +1262,7 @@
           </details>
 
           <!-- Kategoria 2: Bezpieczeństwo i zdrowie -->
-          <details class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
+          <details name="zasady-accordion" class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
             <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none hover:bg-surface-container/60 transition-colors">
               <div class="flex items-center gap-3.5">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 group-open:bg-primary group-open:text-white transition-colors duration-300">
@@ -1366,7 +1301,7 @@
           </details>
 
           <!-- Kategoria 3: Etykieta sali i relaksacja -->
-          <details class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
+          <details name="zasady-accordion" class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
             <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none hover:bg-surface-container/60 transition-colors">
               <div class="flex items-center gap-3.5">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 group-open:bg-primary group-open:text-white transition-colors duration-300">
@@ -1401,7 +1336,7 @@
           </details>
 
           <!-- Kategoria 4: Rezerwacje, Karnet i Odwoływanie -->
-          <details class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
+          <details name="zasady-accordion" class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden shadow-xs transition-all duration-300 open:shadow-sm open:border-primary/30">
             <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none hover:bg-surface-container/60 transition-colors">
               <div class="flex items-center gap-3.5">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 group-open:bg-primary group-open:text-white transition-colors duration-300">
@@ -1480,13 +1415,21 @@
           </p>
 
           <div class="space-y-3">
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30">
-              <span class="material-symbols-outlined text-primary text-[24px]">pin_drop</span>
-              <div>
-                <p class="font-headline-sm text-base text-primary font-semibold">Om Shala Joga Jawor</p>
-                <p class="font-body-sm text-xs text-on-surface-variant">ul. Fryderyka Chopina 13/11, 59-400 Jawor</p>
+            <a href="https://www.google.com/maps/place/Om+Shala+Joga/@51.0485573,16.1919217,577m/data=!3m1!1e3!4m15!1m8!3m7!1s0x470f05e597f1e751:0x343d0238c1441340!2sChopina+13,+59-400+Jawor!3b1!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11ghfv1j47!3m5!1s0x470f0558048240eb:0xa5ea96ba9be416da!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11zxmpdhv2" 
+               target="_blank" rel="noopener noreferrer" 
+               class="flex items-center justify-between p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 hover:shadow-xs transition-all group">
+              <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary text-[24px]">pin_drop</span>
+                <div>
+                  <p class="font-headline-sm text-base text-primary font-semibold group-hover:text-secondary transition-colors">Om Shala Joga Jawor</p>
+                  <p class="font-body-sm text-xs text-on-surface-variant">ul. Fryderyka Chopina 13/11, 59-400 Jawor</p>
+                </div>
               </div>
-            </div>
+              <span class="text-xs font-semibold text-primary flex items-center gap-1 group-hover:translate-x-1 transition-transform shrink-0">
+                <span>Trasa</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+              </span>
+            </a>
 
             <div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30">
               <span class="material-symbols-outlined text-secondary text-[24px]">call</span>
@@ -1515,11 +1458,11 @@
         </div>
 
         <!-- Interaktywna mapa Google Jawor -->
-        <div class="lg:col-span-7">
-          <div class="w-full h-[360px] sm:h-[400px] rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 relative">
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div class="w-full h-[340px] sm:h-[380px] rounded-3xl overflow-hidden shadow-md border border-outline-variant/30 relative">
             <iframe 
-              title="Lokalizacja Om Shala Joga Jawor" 
-              src="https://maps.google.com/maps?q=Chopina%2013,%20Jawor,%20Poland&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              title="Lokalizacja Om Shala Joga Jawor na Mapach Google" 
+              src="https://maps.google.com/maps?cid=11955440784260273882&hl=pl&output=embed" 
               width="100%" 
               height="100%" 
               style="border:0;" 
@@ -1527,6 +1470,18 @@
               loading="lazy" 
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
+          </div>
+          <div class="mt-3.5 flex flex-wrap items-center justify-between gap-3 px-1 text-xs">
+            <span class="text-on-surface-variant flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></span>
+              Profil w Google: <strong>Om Shala Joga</strong>
+            </span>
+            <a href="https://www.google.com/maps/place/Om+Shala+Joga/@51.0485573,16.1919217,577m/data=!3m1!1e3!4m15!1m8!3m7!1s0x470f05e597f1e751:0x343d0238c1441340!2sChopina+13,+59-400+Jawor!3b1!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11ghfv1j47!3m5!1s0x470f0558048240eb:0xa5ea96ba9be416da!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11zxmpdhv2" 
+               target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1.5 text-primary hover:text-secondary font-semibold group transition-colors">
+              <span class="underline underline-offset-4">Otwórz w Google Maps / Wyznacz trasę</span>
+              <span class="material-symbols-outlined text-[15px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">open_in_new</span>
+            </a>
           </div>
         </div>
 
@@ -1544,7 +1499,7 @@
       <!-- O studiu -->
       <div class="space-y-3">
         <div class="flex items-center gap-3">
-          <img alt="Om Shala Joga Logo" class="h-8 w-8 object-contain" src="assets/images/om-shala-mandala-perfect.webp" loading="lazy" decoding="async"/>
+          <img alt="Om Shala Joga Logo" class="h-8 w-8 object-contain" src="assets/images/om-shala-mandala-perfect.png" loading="lazy" decoding="async"/>
           <h3 class="font-headline-sm text-lg text-primary font-serif">Om Shala Joga</h3>
         </div>
         <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
@@ -1581,8 +1536,10 @@
       <div class="space-y-3">
         <h4 class="font-headline-sm text-base text-primary font-semibold">Kontakt</h4>
         <p class="font-body-sm text-xs text-on-surface-variant">
-          ul. Chopina 13/11<br>
-          59-400 Jawor<br>
+          <a href="https://www.google.com/maps/place/Om+Shala+Joga/@51.0485573,16.1919217,577m/data=!3m1!1e3!4m15!1m8!3m7!1s0x470f05e597f1e751:0x343d0238c1441340!2sChopina+13,+59-400+Jawor!3b1!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11ghfv1j47!3m5!1s0x470f0558048240eb:0xa5ea96ba9be416da!8m2!3d51.0485573!4d16.1919217!16s%2Fg%2F11zxmpdhv2" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+            ul. Chopina 13/11<br>
+            59-400 Jawor (Pokaż na mapie ↗)
+          </a><br>
           Tel: <a href="tel:+48512748316" class="text-primary font-semibold hover:underline">+48 512 748 316</a>
         </p>
         <div class="pt-2">
@@ -1632,6 +1589,18 @@
         });
       });
     }
+
+    // Obsługa harmonijki w sekcji Regulamin (wszystkie domyślnie zwinięte, otwarcie jednego zwija inne)
+    const ruleDetails = document.querySelectorAll('#regulamin details');
+    ruleDetails.forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          ruleDetails.forEach(other => {
+            if (other !== item) other.removeAttribute('open');
+          });
+        }
+      });
+    });
   </script>
 
   <!-- Skrypt: Dynamiczny wskaźnik aktualnego czasu w harmonogramie (Czerwona Linia) -->
@@ -1690,14 +1659,14 @@
         const fraction = (timeMinutes - 630) / 90;
         return r3.offsetTop + fraction * r3.offsetHeight;
       }
-      // 12:00 – 16:45 (720 – 1005 min): W rzędzie przerwy popołudniowej (np. 13:00 to 20% wysokości)
-      if (timeMinutes <= 1005) {
-        const fraction = (timeMinutes - 720) / 285;
+      // 12:00 – 17:00 (720 – 1020 min): W rzędzie przerwy popołudniowej
+      if (timeMinutes <= 1020) {
+        const fraction = (timeMinutes - 720) / 300;
         return rBreak.offsetTop + fraction * rBreak.offsetHeight;
       }
-      // 16:45 – 18:00 (1005 – 1080 min): W rzędzie 4 (sesje 16:45 / 17:00)
+      // 17:00 – 18:00 (1020 – 1080 min): W rzędzie 4 (sesje 17:00)
       if (timeMinutes <= 1080) {
-        const fraction = (timeMinutes - 1005) / 75;
+        const fraction = (timeMinutes - 1020) / 60;
         return r4.offsetTop + fraction * r4.offsetHeight;
       }
       // 18:00 – 19:00 (1080 – 1140 min): W rzędzie 5 (sesje 18:00 / 18:15)
